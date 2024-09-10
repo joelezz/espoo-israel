@@ -151,22 +151,27 @@
     <!-- Contact Section -->
     <section id="contact" class="section">
         <div class="container">
-            <h2>Ota yhteys</h2>
-            <p>Haluaisimme kuulla sinusta ja minkälaisissa asioissa voisimme olla avuksi. </p>
-            <form action="{{ url_for('submit_form') }}" method="post">
-                <div class="mb-3">
-                    <label for="name" class="form-label">Nimi</label>
-                    <input type="text" class="form-control" id="name" placeholder="Nimesi">
-                </div>
-                <div class="mb-3">
-                    <label for="email" class="form-label">Sähköposti</label>
-                    <input type="email" class="form-control" id="email" placeholder="Sähköpostisi">
-                </div>
-                <div class="mb-3">
-                    <label for="message" class="form-label">Viesti</label>
-                    <textarea class="form-control" id="message" rows="4" placeholder="Kirjoita viesti..."></textarea>
-                </div>
-                <button type="submit" class="btn btn-primary">Lähetä</button>
+            <h1>Contact Us</h1>
+            {% with messages = get_flashed_messages() %}
+              {% if messages %}
+                <ul>
+                {% for message in messages %}
+                  <li>{{ message }}</li>
+                {% endfor %}
+                </ul>
+              {% endif %}
+            {% endwith %}
+            <form action="{{ url_for('submit_form') }}" method="POST">
+                <label for="name">Name:</label>
+                <input type="text" id="name" name="name" required><br><br>
+                
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required><br><br>
+                
+                <label for="message">Message:</label><br>
+                <textarea id="message" name="message" rows="4" cols="50" required></textarea><br><br>
+                
+                <input type="submit" value="Submit">
             </form>
         </div>
     </section>

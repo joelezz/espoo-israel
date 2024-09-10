@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <title>Hero Section Example</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
+</head>
+<style>
+    .hero {
+        background-image: url("{{ url_for('static', filename='images/hero.jpg') }}");
+        background-size: cover;
+        background-position: center;
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color: white;
+        text-align: center;
+    }
+</style>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="logo">
+            <img src="{{ url_for('static', filename='images/daxtum_pieni2.png') }}" alt="Daxtum logo">
+        </div>
+        <div class="menu-icon" id="menu-icon">
+            <div class="bar"></div>
+            <div class="bar"></div>
+            <div class="bar"></div>
+        </div>
+        <ul class="nav-links" id="nav-links">
+            <li><a href="#hero">Koti</a></li>
+            <li><a href="#about">Meistä</a></li>
+            <li><a href="#services">Palvelut</a></li>
+            <li><a href="#contact">Ota yhteys</a></li>
+        </ul>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="hero" class="hero">
+            <div class="hero-content">
+                <h1>Luotettavat verkkoratkaisut ja konsultointipalvelut</h1>
+                <p>Vuodesta 2001 lähtien olemme ratkaisseet asiakkaidemme haasteita tietoliikenteen ja antenniasennusten osalta. Meihin luottavat mm. Fingrid ja Despro.</p> 
+                    <a>Ota yhteys ja katsotaan miten voisimme auttaa!</a>
+                <a href="#contact" class="btn btn-secondary">Ota yhteys</a>
+            </div>
+    </section>
+
+
+    <!-- About Us Section -->
+    <section id="about" class="section">
+        <div class="container">
+            <h2>Meistä</h2>
+            <p>Aloitimme Daxtum Tietoliikennepalvelut-toiminnan Vaasassa vuonna 2001 Daxtum Oy:n franchising yrityksenä ja vuodesta 2010 yritys on toiminut itsenäisesti.
+
+                Yritys, jolla on teleurakoitsijan pätevyys valokuitu-, antenni-, ja televerkkotöihin.
+                
+                Omaamme tarvittavat työturvallisuuskortit.
+                
+                Seti Oy on myöntänyt yritykselle AT(antenni- ja tietoverkkotyöt) ja OL(valokuitutyöt) luokituksen.
+                
+                Tietoliikennepalveluiden asiantuntija
+                
+                 
+                
+                Lupaamme kestäviä ratkaisuja
+                
+                 
+                
+                Daxpower Oy myy ja toteuttaa tietoliikennepalveluita toimitila- ja asuinkiinteistöille sekä yrityksille. Palvelumme koostuvat asiantuntija-, toteutus- ja ylläpitopalveluista. Teemme muun muassa kuntotutkimuksia ja kartoituksia, laite- ja liittymäasennuksia sekä kaapelointiurakoita. Ylläpidämme myös kiinteistöjen viestintäverkkoja.
+                
+                Asennamme antenni-, data- ja valokuituverkkoja toimisto-, tuotanto ja liikekiinteistöihin uudis- ja saneerauskohteissa.
+                
+                Palvelemme asiakkaitamme koko Suomessa.
+                
+                Asiakkaitamme ovat sähköurakoitsijat, rakennusliikkeet, yritykset ja ne, jotka tarvitsevat toimitilojen tietoliikenneratkaisuja.</p>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="section">
+        <div class="container">
+            <h2>Palvelumme</h2>
+            <div class="row">
+                <div class="col-md-4">
+                    <h3>Konsultointi</h3>
+                    <p>Erikoistyönämme teemme myös lunastukseen liittyviä sopimusneuvotteluja Suomessa, koskien sähkönsiirtoon tarvittavia 110 kV:n, 220 kV:n sekä 400 kV:n voimajohtoja. Asiakkaina on voimajohtoreitin alle jäävien lunastusalueiden maanomistajat, joille lunastajat pyrkivät ennen lunastusluvan hakemista solmimaan kunkin maanomistajan kanssa ennakkosopimuksen.
+ 
+                        Sopimuksen tarkoituksena on antaa johdonomistajalle mahdollisuus aloittaa rakennustyö ennen lunastusmenettelyn mukaista haltuunottoa tai ennakkohaltuunottoa. Sopimuksen perusteella maanomistaja suostuu lunastukseen ja ennakkohaltuunottoon, eikä häntä siten enää kuulla lunastusluvan antamisen yhteydessä vaan lunastaja saa rakentaa ko. johdon kiinteistön kautta.
+                         
+                        Sopimuksen tekemisen lisäksi yhteydenotolla maanomistajaan on merkittävä informatiivinen merkitys. Henkilökohtaisella kontaktilla pystytään kertomaan tarkemmin hankkeesta ja vastaamaan maanomistajien kysymyksiin. Tässä vaiheessa myös maanomistaja voi vielä esittää omia näkemyksiään voimajohtopylväiden sijoittamisesta, joita esitämme voimajohdon suunnittelijoille.
+                         
+                        Yhteistyökumppaneitamme on mm.
+                         
+                        Despro Oy
+                        Destia Oy
+                        Eltel Networks Oy
+                        Enersense Services Oyj
+                        EPV Energia Oy
+                        Fingrid Oyj
+                        Nordic Electro Power Oy
+                        Sitema Oy
+                        Skarta Energy Oy
+                        TLT-Building Oy
+                        Tuulialfa Oy</p>
+                </div>
+                <div class="col-md-4">
+                    <h3>Valokuitu- ja tietoverkkotyöt</h3>
+                    <p>Valokuitutyöt (OL):
+                        Yrityksellä on valokuitutöihin käytettävissään seuraavat laitteet:
+                        
+                        Optinen tehomittapari (lähetin ja vastaanotin)
+                        Näkyvän valon laservalolähetin
+                        Valokuitututka
+                        Kuitumikroskooppi
+                        Kuituliittimien puhdistusvälineet
+                        Valokuidun jatkoskone
+                        Tietoverkkotyöt (T):
+                        Yrityksellä on sisäjohtoverkkotöihin (yleiskaapelointi) seuraavat mittalaitteet:
+                        
+                        parikaapelitesteri, joka soveltuu kaapelointien suorituskyvyn toteamiseen:
+                        Level IIe => Max, luokka D
+                        Level III => Max. luokka E
+                        Level IIIe => Max. luokka EA
+                        Level IV => Max. luokka F
+                        Parikaapelitesteri on varustettu testauslaitevalmistajan hyväksymillä liitäntäsovittimilla ja testauskaapeleilla.
+                        Pysyvän siirtotien liitäntäsovittimet ja testauskaapelit
+                        Kanavan liitäntäsovittimet
+                        Asennetut kaapeloinnit ja siihen liittyvät asennustyöt mitataan asiaankuuluvilla kalibroiduilla mittalaitteilla ja asiakkaalle luovutetaan pöytäkirjat.</p>
+                </div>
+                <div class="col-md-4">
+                    <h3>Antennityöt ja antenniasennukset</h3>
+                    <p> Antenniverkkotyöt (A):
+                        Yrityksellä on antenniverkkotöihin seuraavat mittalaitteet: 
+                        Näytöllinen spektritoiminnolla ja konstellaatiomittauksella varustettu tasomittari, joka soveltuu digitaalisten kuva-aaltojen (DVB-T, -T2, -C, -C2, -S, -S2) mittaukseen taajuusalueella 5 …2150 MHz (2400 MHz). Mittalaitteessa on bittivirhesuhteen (BER) sekä modulaatiovirhesuhteen (MER) mittausominaisuus.
+                        Kohinageneraattori, joka lähettää laajakaistaista kohinaa taajuusvastemittauksen herätesignaalina.
+                        Yleismittari
+                        Kaapelitutka
+                        Asennetut kaapeloinnit ja siihen liittyvät asennustyöt mitataan asiaankuuluvilla kalibroiduilla mittalaitteilla ja asiakkaalle luovutetaan pöytäkirjat.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="section">
+        <div class="container">
+            <h2>Ota yhteys</h2>
+            <p>Haluaisimme kuulla sinusta ja minkälaisissa asioissa voisimme olla avuksi. </p>
+            <form action="{{ url_for('submit_form') }}" method="post">
+                <div class="mb-3">
+                    <label for="name" class="form-label">Nimi</label>
+                    <input type="text" class="form-control" id="name" placeholder="Nimesi">
+                </div>
+                <div class="mb-3">
+                    <label for="email" class="form-label">Sähköposti</label>
+                    <input type="email" class="form-control" id="email" placeholder="Sähköpostisi">
+                </div>
+                <div class="mb-3">
+                    <label for="message" class="form-label">Viesti</label>
+                    <textarea class="form-control" id="message" rows="4" placeholder="Kirjoita viesti..."></textarea>
+                </div>
+                <button type="submit" class="btn btn-primary">Lähetä</button>
+            </form>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-left">
+                <h3>Contact Us</h3>
+                <p>Email: <a href="mailto:info@daxpower.com">info@daxpower.com</a></p>
+                <p>Phone: +123 456 7890</p>
+            </div>
+            <div class="footer-center">
+                <h3>Follow Us</h3>
+                <a href="#" class="social-icon">Facebook</a>
+                <a href="#" class="social-icon">Twitter</a>
+                <a href="#" class="social-icon">LinkedIn</a>
+            </div>
+            <div class="footer-right">
+                <p>&copy; 2024 Daxpower. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript for Menu Toggle -->
+    <script>
+        const menuIcon = document.getElementById('menu-icon');
+        const navLinks = document.getElementById('nav-links');
+
+        menuIcon.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+        });
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

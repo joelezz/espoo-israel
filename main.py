@@ -4,7 +4,7 @@ import secrets, os
 
 app = Flask(__name__)
 
-# Flask-Mail configuration
+# Flask-Mail configurations
 app.config['MAIL_SERVER']='daxpower.com'
 app.config['MAIL_PORT'] = 465
 app.config['MAIL_USERNAME'] = 'lomakkeet@daxpower.com'
@@ -13,10 +13,10 @@ print(f"EMAIL_PASSWORD: {os.environ.get('EMAIL_PASSWORD')}")
 app.config['MAIL_USE_TLS'] = False
 app.config['MAIL_USE_SSL'] = True
 
-# Set a secret key for session management
+# The secret key for session management
 app.secret_key = secrets.token_hex(16)
 
-# Initialize Flask-Mail
+# Initialized Flask-Mail
 mail = Mail(app)
 
 # Home route to serve the HTML form
@@ -32,7 +32,7 @@ def submit_form():
     email = request.form.get('email')
     message = request.form.get('message')
 
-    # Validate form data
+    # Validated form data
     if not name or not email or not message:
         flash("All fields are required!")
         return redirect(url_for('home'))

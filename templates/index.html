@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Daxtum Oy tuottaa luotettavia konsultointi ja asennuspalveluita verkkoratkaisujen ja antenniasennusten myötä. Ota yhteyttä ja kerromme sinulle lisää!">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <title>Hero Section Example</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
@@ -27,9 +28,10 @@
     <!-- Navbar -->
     <nav class="navbar">
         <div class="logo">
-            <img src="{{ url_for('static', filename='images/daxtum_pieni2.png') }}" alt="Daxtum logo">
+           <a href="#hero"> <img src="{{ url_for('static', filename='images/daxtum_pieni2.png') }}" alt="Daxtum logo"></a>
         </div>
         <div class="menu-icon" id="menu-icon">
+            <div class="bar"></div>
             <div class="bar"></div>
             <div class="bar"></div>
             <div class="bar"></div>
@@ -38,81 +40,104 @@
             <li><a href="#hero">Koti</a></li>
             <li><a href="#about">Meistä</a></li>
             <li><a href="#services">Palvelut</a></li>
+            <li><a href="#contact-info">Yhteyshenkilöt</a></li>
             <li><a href="#contact">Ota yhteys</a></li>
         </ul>
     </nav>
 
-    <!-- Hero Section -->
-    <section id="hero" class="hero">
+    <!-- Hero section -->
+    <section id="hero" class="hero d-flex align-items-center text-center bg-dark text-light" style="position:relative;">
             <div class="hero-content">
-                <h1>Luotettavat verkkoratkaisut ja konsultointipalvelut</h1>
-                <p>Vuodesta 2001 lähtien olemme ratkaisseet asiakkaidemme haasteita tietoliikenteen ja antenniasennusten osalta. Meihin luottavat mm. Fingrid ja Despro.</p> 
-                    <a>Ota yhteys ja katsotaan miten voisimme auttaa!</a>
-                <a href="#contact" class="btn btn-secondary">Ota yhteys</a>
+                <h1 class="display-4">Luotettavat verkkoratkaisut ja konsultointipalvelut</h1>
+                <p class="lead">Vuodesta 2001 lähtien olemme ratkaisseet asiakkaidemme haasteita tietoliikenteen ja antenniasennusten osalta. Meihin luottavat mm. Fingrid ja Despro.</p> 
+                    <p class="lead">Ota yhteyttä ja katsotaan miten voisimme auttaa!</p>
+                <a href="#contact" class="btn btn-secondary btn-lg">Ota yhteys</a>
             </div>
     </section>
 
+<!-- About section -->
+<section id="about" class="py-5">
+    <div class="container">
+        <h1 class="text-center mb-4">Meistä</h1>
+        <div class="row">
+            <div class="col-md-10 mx-auto">
+                <p class="lead">Aloitimme Daxtum Tietoliikennepalveluiden toiminnan Vaasassa vuonna 2001 Daxtum Oy:n franchising-yrityksenä ja vuodesta 2010 lähtien olemme toimineet itsenäisesti.</p>
+                
+                <p class="lead">Erikoisosaamisalueinamme on valokuitu-, antenni-, ja televerkkotyöt. Meiltä löytyy tarvittavat työturvallisuuskortit.</p>
 
-    <!-- About Us Section -->
-    <section id="about" class="section">
-        <div class="container">
-            <h2>Meistä</h2>
-            <p>Aloitimme Daxtum Tietoliikennepalvelut-toiminnan Vaasassa vuonna 2001 Daxtum Oy:n franchising yrityksenä ja vuodesta 2010 yritys on toiminut itsenäisesti.
+                <p class="lead">Seti Oy on myöntänyt yrityksellemme AT (antenni- ja tietoverkkotyöt) ja OL (valokuitutyöt) luokituksen.</p>
 
-                Yritys, jolla on teleurakoitsijan pätevyys valokuitu-, antenni-, ja televerkkotöihin.
-                
-                Omaamme tarvittavat työturvallisuuskortit.
-                
-                Seti Oy on myöntänyt yritykselle AT(antenni- ja tietoverkkotyöt) ja OL(valokuitutyöt) luokituksen.
-                
-                Tietoliikennepalveluiden asiantuntija
-                
-                 
-                
-                Lupaamme kestäviä ratkaisuja
-                
-                 
-                
-                Daxpower Oy myy ja toteuttaa tietoliikennepalveluita toimitila- ja asuinkiinteistöille sekä yrityksille. Palvelumme koostuvat asiantuntija-, toteutus- ja ylläpitopalveluista. Teemme muun muassa kuntotutkimuksia ja kartoituksia, laite- ja liittymäasennuksia sekä kaapelointiurakoita. Ylläpidämme myös kiinteistöjen viestintäverkkoja.
-                
-                Asennamme antenni-, data- ja valokuituverkkoja toimisto-, tuotanto ja liikekiinteistöihin uudis- ja saneerauskohteissa.
-                
-                Palvelemme asiakkaitamme koko Suomessa.
-                
-                Asiakkaitamme ovat sähköurakoitsijat, rakennusliikkeet, yritykset ja ne, jotka tarvitsevat toimitilojen tietoliikenneratkaisuja.</p>
+                <p class="lead">Tietoliikennepalveluiden asiantuntijana arvolupauksemme on tuottaa kestäviä ratkaisuja. Daxpower Oy myy ja toteuttaa tietoliikennepalveluita toimitila- ja asuinkiinteistöille sekä yrityksille. Palvelumme koostuvat asiantuntija-, toteutus- ja ylläpitopalveluista.</p>
+
+                <p class="lead">Teemme muun muassa kuntotutkimuksia ja kartoituksia, laite- ja liittymäasennuksia sekä kaapelointiurakoita. Ylläpidämme myös kiinteistöjen viestintäverkkoja.</p>
+
+                <p class="lead">Asennamme antenni-, data- ja valokuituverkkoja toimisto-, tuotanto- ja liikekiinteistöihin uudis- ja saneerauskohteissa. Palvelemme asiakkaitamme koko Suomessa.</p>
+
+                <p class="lead">Asiakkaitamme ovat sähköurakoitsijat, rakennusliikkeet, yritykset ja ne, jotka tarvitsevat toimitilojen tietoliikenneratkaisuja.</p>
+            </div>
         </div>
-    </section>
 
-    <!-- Services Section -->
-    <section id="services" class="section">
-        <div class="container">
-            <h2>Palvelumme</h2>
-            <div class="row">
-                <div class="col-md-4">
+
+    </div>
+</section>
+
+<section id="carousel" class="section">
+
+<!-- Carousel container -->
+    <div class="container d-flex justify-content-center">
+        <div id="aboutCarousel" class="carousel slide mb-4" data-bs-ride="carousel" style="width: 50%; height: 50vh;">
+            <div class="carousel-indicators">
+                <button type="button" data-bs-target="#aboutCarousel" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+                <button type="button" data-bs-target="#aboutCarousel" data-bs-slide-to="1" aria-label="Slide 2"></button>
+                <button type="button" data-bs-target="#aboutCarousel" data-bs-slide-to="2" aria-label="Slide 3"></button>
+            </div>
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                    <img src="{{ url_for('static', filename='images/pic1.jpg') }}" class="d-block mx-auto w-100" style="max-height: 40vh; width: auto;" alt="Image 1 description">
+                </div>
+                <div class="carousel-item">
+                    <img src="{{ url_for('static', filename='images/pic2.jpg') }}" class="d-block mx-auto w-100" style="max-height: 40vh; width: auto;" alt="Image 2 description">
+                </div>
+                <div class="carousel-item">
+                    <img src="{{ url_for('static', filename='images/pic3.jpg') }}" class="d-block mx-auto w-100" style="max-height: 40vh; width: auto;" alt="Image 3 description">
+                </div>
+            </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#aboutCarousel" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#aboutCarousel" data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Next</span>
+            </button>
+        </div>
+    </div>
+</section>
+
+
+<!-- Services section -->
+<section id="services" class="py-5 bg-light">
+    <div class="container">
+        <h1 class="text-center mb-4">Palvelumme</h1>
+        <div class="row text-center">
+            <div class="col-md-6 col-lg-4 mb-4">
                     <h3>Konsultointi</h3>
-                    <p>Erikoistyönämme teemme myös lunastukseen liittyviä sopimusneuvotteluja Suomessa, koskien sähkönsiirtoon tarvittavia 110 kV:n, 220 kV:n sekä 400 kV:n voimajohtoja. Asiakkaina on voimajohtoreitin alle jäävien lunastusalueiden maanomistajat, joille lunastajat pyrkivät ennen lunastusluvan hakemista solmimaan kunkin maanomistajan kanssa ennakkosopimuksen.
+                    <p class="lead">
+                        Erikoistyönämme teemme myös lunastukseen liittyviä sopimusneuvotteluja Suomessa, koskien sähkönsiirtoon tarvittavia 110 kV:n, 220 kV:n sekä 400 kV:n voimajohtoja. Asiakkaina on voimajohtoreitin alle jäävien lunastusalueiden maanomistajat, joille lunastajat pyrkivät ennen lunastusluvan hakemista solmimaan kunkin maanomistajan kanssa ennakkosopimuksen.
  
                         Sopimuksen tarkoituksena on antaa johdonomistajalle mahdollisuus aloittaa rakennustyö ennen lunastusmenettelyn mukaista haltuunottoa tai ennakkohaltuunottoa. Sopimuksen perusteella maanomistaja suostuu lunastukseen ja ennakkohaltuunottoon, eikä häntä siten enää kuulla lunastusluvan antamisen yhteydessä vaan lunastaja saa rakentaa ko. johdon kiinteistön kautta.
                          
-                        Sopimuksen tekemisen lisäksi yhteydenotolla maanomistajaan on merkittävä informatiivinen merkitys. Henkilökohtaisella kontaktilla pystytään kertomaan tarkemmin hankkeesta ja vastaamaan maanomistajien kysymyksiin. Tässä vaiheessa myös maanomistaja voi vielä esittää omia näkemyksiään voimajohtopylväiden sijoittamisesta, joita esitämme voimajohdon suunnittelijoille.
-                         
-                        Yhteistyökumppaneitamme on mm.
-                         
-                        Despro Oy
-                        Destia Oy
-                        Eltel Networks Oy
-                        Enersense Services Oyj
-                        EPV Energia Oy
-                        Fingrid Oyj
-                        Nordic Electro Power Oy
-                        Sitema Oy
-                        Skarta Energy Oy
-                        TLT-Building Oy
-                        Tuulialfa Oy</p>
+                        Sopimuksen tekemisen lisäksi yhteydenotolla maanomistajaan on merkittävä informatiivinen merkitys. 
+                                                  
+                    
+                    </p>        
+                    <div class="icon">
+                        <img src="{{ url_for('static', filename='images/icons8-consulting-100.png') }}" alt="Consulting icon"  width="100" height="100">
+                    </div>
                 </div>
                 <div class="col-md-4">
                     <h3>Valokuitu- ja tietoverkkotyöt</h3>
-                    <p>Valokuitutyöt (OL):
+                    <p class="lead">Valokuitutyöt (OL):
                         Yrityksellä on valokuitutöihin käytettävissään seuraavat laitteet:
                         
                         Optinen tehomittapari (lähetin ja vastaanotin)
@@ -132,26 +157,87 @@
                         Parikaapelitesteri on varustettu testauslaitevalmistajan hyväksymillä liitäntäsovittimilla ja testauskaapeleilla.
                         Pysyvän siirtotien liitäntäsovittimet ja testauskaapelit
                         Kanavan liitäntäsovittimet
-                        Asennetut kaapeloinnit ja siihen liittyvät asennustyöt mitataan asiaankuuluvilla kalibroiduilla mittalaitteilla ja asiakkaalle luovutetaan pöytäkirjat.</p>
+                        Asennetut kaapeloinnit ja siihen liittyvät asennustyöt mitataan asiaankuuluvilla kalibroiduilla mittalaitteilla ja asiakkaalle luovutetaan pöytäkirjat.
+                    </p>
+                    <div class="icon">
+                        <img src="{{ url_for('static', filename='images/icons8-switch-100.png') }}" alt="Networking device icon"  width="100" height="100">
+                    </div>
                 </div>
                 <div class="col-md-4">
-                    <h3>Antennityöt ja antenniasennukset</h3>
-                    <p> Antenniverkkotyöt (A):
+                    <h3>Antennityöt ja -asennukset</h3>
+                    <p class="lead"> Antenniverkkotyöt (A):
                         Yrityksellä on antenniverkkotöihin seuraavat mittalaitteet: 
                         Näytöllinen spektritoiminnolla ja konstellaatiomittauksella varustettu tasomittari, joka soveltuu digitaalisten kuva-aaltojen (DVB-T, -T2, -C, -C2, -S, -S2) mittaukseen taajuusalueella 5 …2150 MHz (2400 MHz). Mittalaitteessa on bittivirhesuhteen (BER) sekä modulaatiovirhesuhteen (MER) mittausominaisuus.
                         Kohinageneraattori, joka lähettää laajakaistaista kohinaa taajuusvastemittauksen herätesignaalina.
                         Yleismittari
                         Kaapelitutka
-                        Asennetut kaapeloinnit ja siihen liittyvät asennustyöt mitataan asiaankuuluvilla kalibroiduilla mittalaitteilla ja asiakkaalle luovutetaan pöytäkirjat.</p>
+                        Asennetut kaapeloinnit ja siihen liittyvät asennustyöt mitataan asiaankuuluvilla kalibroiduilla mittalaitteilla ja asiakkaalle luovutetaan pöytäkirjat.
+                    </p>
+                    <div class="icon">
+                        <img src="{{ url_for('static', filename='images/icons8-installation-100.png') }}" alt="Installation tools icon"  width="100" height="100">
+                    </div>
+                </div>
+                <div class="col-md-4" style="align-items: center;">
+                    <h3>Mittauspalvelut</h3>
+                    <p class="lead"> 
+                        Valokuituasennuksien mittaus
+                        Parikaapelointiasennuksien mittaus
+                        Antenniasennuksien mittaus
+                        Maaperän resistiivisyyden mittaus pylväsmaadoituksien suunnitteluun
+                        Vianhakumittaukset
+                        Asennetut kaapeloinnit ja siihen liittyvät asennustyöt mitataan asiaankuuluvilla kalibroiduilla mittalaitteilla ja asiakkaalle luovutetaan pöytäkirjat.
+                    </p>
+                    <div class="icon">
+                        <img src="{{ url_for('static', filename='images/icons8-installation-100.png') }}" alt="Installation tools icon"  width="100" height="100">
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Contact Section -->
+<!-- Contact info section -->
+<section id="contact-info" class="section">
+    <div class="container">
+        <h1>Yhteyshenkilöt</h1>
+        <div class="contact-row">
+            <div class="contact-person">
+                <img src="{{ url_for('static', filename='images/user.png') }}" alt="icon" width="100" height="100">
+                <p class="lead">Hannu Matkoski</p>
+                <p class="lead">Valokuitu-, tietovekkotyöt ja konsultointi</p>
+                <p class="lead">
+                    puh. 040 777 8845 <br>
+                    <a href="mailto:hannu.matkoski@daxpower.com">Sähköposti</a> <br>
+                    
+                </p>
+            </div>
+            <div class="contact-person">
+                <img src="{{ url_for('static', filename='images/user.png') }}" alt="icon" width="100" height="100">
+                <p class="lead">Mikko Nikkola</p>
+                <p class="lead">Valokuitu-, antenni-, tietovekkotyöt ja konsultointi</p>
+
+                <p class="lead">
+                    puh. 040 777 0302 <br>
+                    <a href="mailto:mikko.nikkola@daxpower.com">Sähköposti</a>
+                </p>
+            </div>
+            <div class="contact-person">
+                <img src="{{ url_for('static', filename='images/user.png') }}" alt="icon" width="100" height="100">
+                <p class="lead">Richard Gustafsson</p>
+                <p class="lead">Konsultointi</p>
+                <p class="lead">
+                    050 338 3445 <br>
+                 <a href="mailto:richard.gustafsson@daxpower.com">Sähköposti</a>
+                </p>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<!-- Contact form section -->
     <section id="contact" class="section">
         <div class="container">
-            <h1>Contact Us</h1>
+            <h1>Ota yhteyttä</h1>
             {% with messages = get_flashed_messages() %}
               {% if messages %}
                 <ul>
@@ -161,41 +247,36 @@
                 </ul>
               {% endif %}
             {% endwith %}
-            <form action="{{ url_for('submit_form') }}" method="POST">
-                <label for="name">Name:</label>
-                <input type="text" id="name" name="name" required><br><br>
-                
-                <label for="email">Email:</label>
-                <input type="email" id="email" name="email" required><br><br>
-                
-                <label for="message">Message:</label><br>
-                <textarea id="message" name="message" rows="4" cols="50" required></textarea><br><br>
-                
-                <input type="submit" value="Submit">
+            <form action="{{ url_for('home') }}" method="POST">
+                {{ form.hidden_tag() }}
+                <div class="mb-3">
+                    <label for="name" class="form-label">Yrityksen nimi ja yhteyshenkilö:</label>
+                    {{ form.name(class_="form-control") }}
+                </div>
+                <div class="mb-3">
+                    <label for="email" class="form-label">Sähköposti:</label>
+                    {{ form.email(class_="form-control") }}
+                </div>
+                <div class="mb-3">
+                    <label for="message" class="form-label">Viesti:</label>
+                    {{ form.message(class_="form-control") }}
+                </div>
+                <button type="submit" class="btn btn-primary">Lähetä</button>
             </form>
         </div>
     </section>
 
-    <footer class="footer">
-        <div class="footer-content">
-            <div class="footer-left">
-                <h3>Contact Us</h3>
-                <p>Email: <a href="mailto:info@daxpower.com">info@daxpower.com</a></p>
-                <p>Phone: +123 456 7890</p>
-            </div>
-            <div class="footer-center">
-                <h3>Follow Us</h3>
-                <a href="#" class="social-icon">Facebook</a>
-                <a href="#" class="social-icon">Twitter</a>
-                <a href="#" class="social-icon">LinkedIn</a>
-            </div>
-            <div class="footer-right">
-                <p>&copy; 2024 Daxpower. All rights reserved.</p>
-            </div>
-        </div>
-    </footer>
+<!-- Footer -->
+<footer class="text-center bg-secondary text-white py-4">
+    <div class="container">
+        <p><strong>Daxpower Oy</strong><br>2378748-3<br>Varastokatu 9, 65100 Vaasa</p>
+        <p>&copy; 2024 <a href="https://daxpower.com/" class="text-white">Daxpower.com</a></p>
+    </div>
+</footer>
 
-    <!-- JavaScript for Menu Toggle -->
+
+
+    <!-- JavaScript for menu toggle -->
     <script>
         const menuIcon = document.getElementById('menu-icon');
         const navLinks = document.getElementById('nav-links');

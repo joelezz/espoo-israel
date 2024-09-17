@@ -11,7 +11,7 @@ csrf = CSRFProtect(app)
 
 # Load environment variables
 app.config['SECRET_KEY'] = os.environ.get('SECRET_KEY', 'secret-key')
-app.config['MAIL_SERVER'] = 'smtp.daxpower.com'
+app.config['MAIL_SERVER'] = 'daxpower.com'
 app.config['MAIL_PORT'] = 465
 app.config['MAIL_USERNAME'] = 'lomakkeet@daxpower.com'
 app.config['MAIL_PASSWORD'] = os.environ.get('EMAIL_PASSWORD')

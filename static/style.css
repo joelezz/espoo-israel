@@ -212,6 +212,14 @@ form {
     margin-right: auto;
 }
 
+.errors {
+    color: red;
+    font-size: 14px;
+    list-style: none;
+    padding: 0;
+}
+
+
 textarea {
     width: 100%; /* Make textarea full width of its container */
     height: 150px; /* Adjust height as needed */

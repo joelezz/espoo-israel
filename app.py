@@ -42,7 +42,7 @@ def home():
             msg = Message(f"New Contact Form Submission from {name}",
                           sender='lomakkeet@daxpower.com',
                           recipients=["hannu.matkoski@daxpower.com", "joel.ezzahid@gmail.com", "zzjoe@tuta.io"])
-            msg.body = f"Name: {name}\nEmail: {email}\nMessage: {message}"
+            msg.body = f"Yritys ja yhteyshenkilö: {name}\nSähköposti: {email}\nViesti: {message}"
             mail.send(msg)
             flash("Viestisi lähetettiin onnistuneesti!")
             return redirect(url_for('thank_you'))

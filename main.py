@@ -24,6 +24,13 @@ app.config['SECRET_KEY'] = app.secret_key
 # Initialize Flask-Mail
 mail = Mail(app)
 
+@app.before_request
+def log_request_info():
+    if request.method == "POST":
+        print("POST request received")
+        print(f"CSRF Token: {request.form.get('csrf_token')}")
+
+
 # Home route to serve the HTML one pager and form
 @app.route('/', methods=['GET', 'POST'])
 def home():

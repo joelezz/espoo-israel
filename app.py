@@ -10,7 +10,7 @@ app = Flask(__name__)
 csrf = CSRFProtect(app)
 
 # Load environment variables
-app.config['SECRET_KEY'] = os.environ.get('SECRET_KEY', 'default-secret-key')  # Provide a default for local development
+app.config['SECRET_KEY'] = os.environ.get('SECRET_KEY', 'secret-key')
 app.config['MAIL_SERVER'] = 'smtp.daxpower.com'
 app.config['MAIL_PORT'] = 465
 app.config['MAIL_USERNAME'] = 'lomakkeet@daxpower.com'

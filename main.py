@@ -1,17 +1,16 @@
 from flask import Flask, request, redirect, url_for, render_template, flash
 from flask_mail import Mail, Message
 import secrets, os
-from dotenv import load_dotenv
+#from dotenv import load_dotenv
 from flask_wtf.csrf import CSRFProtect
 from contact_form import ContactForm
 
 app = Flask(__name__)
 csrf = CSRFProtect(app)
-load_dotenv()
+#load_dotenv()
 
 # The secret key for session management
-app.secret_key = secrets.token_hex(16)
-
+app.secret_key = os.environ.get('SECRET_KEY')
 # Flask-Mail configurations
 app.config['MAIL_SERVER'] = 'smtp.daxpower.com'  # Ensure this is the correct SMTP server
 app.config['MAIL_PORT'] = 465

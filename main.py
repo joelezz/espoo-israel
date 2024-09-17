@@ -3,11 +3,8 @@ from flask_mail import Mail, Message
 import secrets, os
 from dotenv import load_dotenv
 from flask_wtf.csrf import CSRFProtect
-from flask import Flask, render_template, flash, redirect, url_for
-from flask_wtf.csrf import CSRFProtect
 from contact_form import ContactForm
 import timer
-
 
 app = Flask(__name__)
 csrf = CSRFProtect(app)
@@ -17,7 +14,7 @@ load_dotenv()
 app.secret_key = secrets.token_hex(16)
 
 # Flask-Mail configurations
-app.config['MAIL_SERVER']='daxpower.com'
+app.config['MAIL_SERVER'] = 'smtp.daxpower.com'  # Ensure this is the correct SMTP server
 app.config['MAIL_PORT'] = 465
 app.config['MAIL_USERNAME'] = 'lomakkeet@daxpower.com'
 app.config['MAIL_PASSWORD'] = os.environ.get('EMAIL_PASSWORD')
@@ -61,4 +58,4 @@ def thank_you():
     return "Kiitos yhteydenotosta! Palaamme sinulle mahdollisimman pian."
 
 if __name__ == '__main__':
-    app.run()
+    app.run()  

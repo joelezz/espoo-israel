@@ -41,7 +41,7 @@ def home():
         try:
             msg = Message(f"New Contact Form Submission from {name}",
                           sender='lomakkeet@daxpower.com',
-                          recipients=["zzjoe@tuta.io"])
+                          recipients=["hannu.matkoski@daxpower.com", "joel.ezzahid@gmail.com", "zzjoe@tuta.io"])
             msg.body = f"Name: {name}\nEmail: {email}\nMessage: {message}"
             mail.send(msg)
             flash("Viestisi lähetettiin onnistuneesti!")

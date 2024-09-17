@@ -39,4 +39,4 @@ jobs:
           app-name: 'daxpower'  # Replace with your Azure Web App name
           slot-name: 'production'
           publish-profile: ${{ secrets.AZURE_CREDENTIALS }}  # Set up the Azure Web App Publish Profile as a secret
-          package: './
+          package: 'myapp.zip'  # Corrected the package path

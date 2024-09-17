@@ -1,4 +1,6 @@
-Flask==2.2.3
+Flask==2.3.2
 Flask-Mail==0.9.1
-Flask-WTF==1.0.1
 python-dotenv==1.0.0
+Flask-WTF==1.1.1
+Werkzeug==2.3.7  # or latest version
+timer==0.1.1

@@ -6,11 +6,13 @@ from flask_wtf.csrf import CSRFProtect
 from flask import Flask, render_template, flash, redirect, url_for
 from flask_wtf.csrf import CSRFProtect
 from contact_form import ContactForm
+import timer
 
 
 app = Flask(__name__)
 csrf = CSRFProtect(app)
 load_dotenv()
+
 # The secret key for session management
 app.secret_key = secrets.token_hex(16)
 
@@ -23,10 +25,10 @@ app.config['MAIL_USE_TLS'] = False
 app.config['MAIL_USE_SSL'] = True
 app.config['SECRET_KEY'] = app.secret_key
 
-# Initialized Flask-Mail
+# Initialize Flask-Mail
 mail = Mail(app)
 
-# Home route to serve the HTML form
+# Home route to serve the HTML one pager and form
 @app.route('/', methods=['GET', 'POST'])
 def home():
     form = ContactForm()  # Your custom form
@@ -44,6 +46,7 @@ def home():
             msg.body = f"Name: {name}\nEmail: {email}\nMessage: {message}"
             mail.send(msg)
             flash("Viestisi lähetettiin onnistuneesti!")
+            timer.set_timer(1000)
             return redirect(url_for('thank_you'))
         except Exception as e:
             print(f"Viestin toimitus ei onnistunut: {str(e)}")

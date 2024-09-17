@@ -248,8 +248,9 @@
               {% endif %}
             {% endwith %}
 
-            <form method="POST" action="/">
-                {{ form.hidden_tag() }}  <!-- This includes the CSRF token -->
+            <form method="post" action="/">
+                {{ form.csrf_token }}
+                <!-- This includes the CSRF token -->
             
                 <!-- Name field -->
                 <div class="form-group">

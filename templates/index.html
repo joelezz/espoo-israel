@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700&display=swap" as="style">
 </head>
 <style>
     .hero {
@@ -35,11 +35,13 @@
             <div class="bar"></div>
             <div class="bar"></div>
             <div class="bar"></div>
+            <div class="bar"></div>
         </div>
         <ul class="nav-links" id="nav-links">
             <li><a href="#hero">Koti</a></li>
             <li><a href="#about">Meistä</a></li>
             <li><a href="#services">Palvelut</a></li>
+            <li><a href="#values">Arvot</a></li>
             <li><a href="#contact-info">Yhteyshenkilöt</a></li>
             <li><a href="#contact">Ota yhteys</a></li>
         </ul>
@@ -48,9 +50,9 @@
     <!-- Hero section -->
     <section id="hero" class="hero d-flex align-items-center text-center bg-dark text-light" style="position:relative;">
             <div class="hero-content">
-                <h1 class="display-4">Luotettavat verkkoratkaisut ja konsultointipalvelut</h1>
-                <p class="lead">Vuodesta 2001 lähtien olemme ratkaisseet asiakkaidemme haasteita tietoliikenteen ja antenniasennusten osalta. Meihin luottavat mm. Fingrid ja Despro.</p> 
-                    <p class="lead">Ota yhteyttä ja katsotaan miten voisimme auttaa!</p>
+                <h1 class="display-4">Luotettavat tietoliikenneratkaisut ja konsultointipalvelut</h1>
+                <p class="lead">Vuodesta 2001 lähtien olemme ratkaisseet asiakkaidemme haasteita tietoliikenteen ja antenniasennusten osalta sekä palvelleet sähkövoimalinjojen suunnittelijoita maankäyttö- ja maastotöiden osalta.</p> 
+                    <p class="lead">Ota yhteyttä ja katsotaan miten voimme auttaa!</p>
                 <a href="#contact" class="btn btn-secondary btn-lg">Ota yhteys</a>
             </div>
     </section>
@@ -61,57 +63,51 @@
         <h1 class="text-center mb-4">Meistä</h1>
         <div class="row">
             <div class="col-md-10 mx-auto">
-                <p class="lead">Aloitimme Daxtum Tietoliikennepalveluiden toiminnan Vaasassa vuonna 2001 Daxtum Oy:n franchising-yrityksenä ja vuodesta 2010 lähtien olemme toimineet itsenäisesti.</p>
-                
-                <p class="lead">Erikoisosaamisalueinamme on valokuitu-, antenni-, ja televerkkotyöt. Meiltä löytyy tarvittavat työturvallisuuskortit.</p>
-
-                <p class="lead">Seti Oy on myöntänyt yrityksellemme AT (antenni- ja tietoverkkotyöt) ja OL (valokuitutyöt) luokituksen.</p>
-
-                <p class="lead">Tietoliikennepalveluiden asiantuntijana arvolupauksemme on tuottaa kestäviä ratkaisuja. Daxpower Oy myy ja toteuttaa tietoliikennepalveluita toimitila- ja asuinkiinteistöille sekä yrityksille. Palvelumme koostuvat asiantuntija-, toteutus- ja ylläpitopalveluista.</p>
-
-                <p class="lead">Teemme muun muassa kuntotutkimuksia ja kartoituksia, laite- ja liittymäasennuksia sekä kaapelointiurakoita. Ylläpidämme myös kiinteistöjen viestintäverkkoja.</p>
-
-                <p class="lead">Asennamme antenni-, data- ja valokuituverkkoja toimisto-, tuotanto- ja liikekiinteistöihin uudis- ja saneerauskohteissa. Palvelemme asiakkaitamme koko Suomessa.</p>
-
+                <p class="lead">Aloitimme Daxtum Tietoliikennepalvelut-toiminnan Vaasassa vuonna 2001 Daxtum Oy:n franchising yrityksenä ja vuodesta 2010 yritys on toiminut itsenäisesti.</p>
+                <p class="lead">Yritys, jolla on teleurakoitsijan pätevyys valokuitu-, antenni-, ja televerkkotöihin.</p>
+                <p class="lead">Omaamme tarvittavat mm. työturvallisuus-, sähkötyöturvallisuus SFS 6002- ja sähkötyön hätäensiapukortit.</p>
+                <p class="lead">Seti Oy on myöntänyt yritykselle AT- (antenni- ja tietoverkkotyöt) sekä OL- (valokuitutyöt) sertifikaatit.</p>
+                <p class="lead">Daxpower Oy myy ja toteuttaa tietoliikennepalveluita toimitila- ja asuinkiinteistöille sekä yrityksille. Palvelumme koostuvat asiantuntija-, toteutus- ja ylläpitopalveluista. Teemme muun muassa kuntotutkimuksia ja kartoituksia, laite- ja liittymäasennuksia sekä kaapelointiurakoita. Ylläpidämme myös kiinteistöjen viestintäverkkoja.</p>
+                <p class="lead">Asennamme antenni-, data- ja valokuituverkkoja toimisto-, tuotanto- ja liikekiinteistöihin uudis- ja saneerauskohteissa.</p>
                 <p class="lead">Asiakkaitamme ovat sähköurakoitsijat, rakennusliikkeet, yritykset ja ne, jotka tarvitsevat toimitilojen tietoliikenneratkaisuja.</p>
             </div>
         </div>
-
-
     </div>
 </section>
 
 <section id="carousel" class="section">
 
 <!-- Carousel container -->
-    <div class="container d-flex justify-content-center">
-        <div id="aboutCarousel" class="carousel slide mb-4" data-bs-ride="carousel" style="width: 50%; height: 50vh;">
-            <div class="carousel-indicators">
-                <button type="button" data-bs-target="#aboutCarousel" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-                <button type="button" data-bs-target="#aboutCarousel" data-bs-slide-to="1" aria-label="Slide 2"></button>
-                <button type="button" data-bs-target="#aboutCarousel" data-bs-slide-to="2" aria-label="Slide 3"></button>
-            </div>
-            <div class="carousel-inner">
-                <div class="carousel-item active">
-                    <img src="{{ url_for('static', filename='images/pic1.webp') }}" class="d-block mx-auto w-100" style="max-height: 40vh; width: auto;" alt="Image 1 description">
-                </div>
-                <div class="carousel-item">
-                    <img src="{{ url_for('static', filename='images/pic2.webp') }}" class="d-block mx-auto w-100" style="max-height: 40vh; width: auto;" alt="Image 2 description">
-                </div>
-                <div class="carousel-item">
-                    <img src="{{ url_for('static', filename='images/pic3.webp') }}" class="d-block mx-auto w-100" style="max-height: 40vh; width: auto;" alt="Image 3 description">
-                </div>
-            </div>
-            <button class="carousel-control-prev" type="button" data-bs-target="#aboutCarousel" data-bs-slide="prev">
-                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                <span class="visually-hidden">Previous</span>
-            </button>
-            <button class="carousel-control-next" type="button" data-bs-target="#aboutCarousel" data-bs-slide="next">
-                <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                <span class="visually-hidden">Next</span>
-            </button>
+<div class="container d-flex justify-content-center">
+    <div id="aboutCarousel" class="carousel slide mb-4" data-bs-ride="carousel" style="width: 100%; height: 50vh;">
+        <div class="carousel-indicators">
+            <button type="button" data-bs-target="#aboutCarousel" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+            <button type="button" data-bs-target="#aboutCarousel" data-bs-slide-to="1" aria-label="Slide 2"></button>
+            <button type="button" data-bs-target="#aboutCarousel" data-bs-slide-to="2" aria-label="Slide 3"></button>
         </div>
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+                <img src="{{ url_for('static', filename='images/pic1.webp') }}" class="d-block mx-auto img-fluid" alt="First image description">
+            </div>
+            <div class="carousel-item">
+                <img src="{{ url_for('static', filename='images/pic2.webp') }}" class="d-block mx-auto img-fluid" alt="Second image description">
+            </div>
+            <div class="carousel-item">
+                <img src="{{ url_for('static', filename='images/pic3.webp') }}" class="d-block mx-auto img-fluid" alt="Third image description">
+            </div>
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#aboutCarousel" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#aboutCarousel" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+        </button>
     </div>
+</div>
+
+
 </section>
 
 
@@ -122,71 +118,77 @@
         <div class="row text-center">
             <div class="col-md-6 col-lg-4 mb-4">
                     <h3>Konsultointi</h3>
-                    <p class="lead">
-                        Erikoistyönämme teemme myös lunastukseen liittyviä sopimusneuvotteluja Suomessa, koskien sähkönsiirtoon tarvittavia 110 kV:n, 220 kV:n sekä 400 kV:n voimajohtoja. Asiakkaina on voimajohtoreitin alle jäävien lunastusalueiden maanomistajat, joille lunastajat pyrkivät ennen lunastusluvan hakemista solmimaan kunkin maanomistajan kanssa ennakkosopimuksen.
+                       <p>Erikoistyönämme teemme myös lunastukseen liittyviä sopimusneuvotteluja Suomessa, koskien sähkönsiirtoon tarvittavia 110 kV:n, 220 kV:n sekä 400 kV:n voimajohtoja. Asiakkaina on voimajohtoreitin alle jäävien lunastusalueiden maanomistajat, joille lunastajat pyrkivät ennen lunastusluvan hakemista solmimaan kunkin maanomistajan kanssa ennakkohaltuunottosopimuksen.
  
                         Sopimuksen tarkoituksena on antaa johdonomistajalle mahdollisuus aloittaa rakennustyö ennen lunastusmenettelyn mukaista haltuunottoa tai ennakkohaltuunottoa. Sopimuksen perusteella maanomistaja suostuu lunastukseen ja ennakkohaltuunottoon, eikä häntä siten enää kuulla lunastusluvan antamisen yhteydessä vaan lunastaja saa rakentaa ko. johdon kiinteistön kautta.
                          
-                        Sopimuksen tekemisen lisäksi yhteydenotolla maanomistajaan on merkittävä informatiivinen merkitys. 
-                                                  
-                    
-                    </p>        
+                        Sopimuksen tekemisen lisäksi yhteydenotolla maanomistajaan on merkittävä informatiivinen merkitys, koska maanomistaja saa tarvittavat tiedot koko käyttöoikeuden lunastuksen toimenpiteistä suunnittelusta aina rakentamiseen saakka.</p> 
                     <div class="icon">
                         <img src="{{ url_for('static', filename='images/icons8-consulting-100.webp') }}" alt="Consulting icon"  width="100" height="100">
                     </div>
                 </div>
                 <div class="col-md-4">
-                    <h3>Valokuitu- ja tietoverkkotyöt</h3>
-                    <p class="lead">Valokuitutyöt (OL):
-                        Yrityksellä on valokuitutöihin käytettävissään seuraavat laitteet:
+                    <h3>Tietoliikenne</h3>
+                       <p>Tietoliikennepalveluihimme kuuluu kiinteistön sisällä yleiskaapelointi, joka sisältää valokuitu-, parikaapelointi- ja antennityöt.
+                        Valokuituhitsaaminen on tarkkuutta ja erityistä ammattiosaamista vaativaa työtä. Meiltä saat työhön kouluttautuneen, osaavan ammattilaisen tekemään työn laadukkaasti ja kerralla oikein. Käytössämme on ammattikäyttöön tarkoitettu, alan johtava kalusto ja tarvikkeet.
+                        Osaamistamme ovat optisten valokuitujen hitsaustyöt. Pystymme päättämään hitsaamalla erilaiset optiset valokuidut. Valokuitutöitä voimme tehdä sekä sisällä että ulkona. Palveluihimme kuuluvat valokuituverkkojen rakentaminen, vianhaku ja -korjaus sekä näihin liittyvät mittaukset ja tutkaukset.
+                        Suoritamme myös tuuli- ja aurinkovoimapuistojen sekä korkejännitelinjojen OPGW valokuitutöitä. 
+                        Asennamme antenni-, data- ja valokuituverkkoja toimisto-, tuotanto ja liikekiinteistöihin uudis- ja saneerauskohteissa.
+                        Mittaukset suoritetaan asiaankuuluvilla kalibroiduilla mittalaitteilla ja asiakkaalle luovutetaan tarvittavat dokumentit.
                         
-                        Optinen tehomittapari (lähetin ja vastaanotin)
-                        Näkyvän valon laservalolähetin
-                        Valokuitututka
-                        Kuitumikroskooppi
-                        Kuituliittimien puhdistusvälineet
-                        Valokuidun jatkoskone
-                        Tietoverkkotyöt (T):
-                        Yrityksellä on sisäjohtoverkkotöihin (yleiskaapelointi) seuraavat mittalaitteet:
+                        Seti Oy on myöntänyt yritykselle AT- (antenni- ja tietoverkkotyöt) sekä OL- (valokuitutyöt) luokituksen.</p> 
                         
-                        parikaapelitesteri, joka soveltuu kaapelointien suorituskyvyn toteamiseen:
-                        Level IIe => Max, luokka D
-                        Level III => Max. luokka E
-                        Level IIIe => Max. luokka EA
-                        Level IV => Max. luokka F
-                        Parikaapelitesteri on varustettu testauslaitevalmistajan hyväksymillä liitäntäsovittimilla ja testauskaapeleilla.
-                        Pysyvän siirtotien liitäntäsovittimet ja testauskaapelit
-                        Kanavan liitäntäsovittimet
-                        Asennetut kaapeloinnit ja siihen liittyvät asennustyöt mitataan asiaankuuluvilla kalibroiduilla mittalaitteilla ja asiakkaalle luovutetaan pöytäkirjat.
-                    </p>
                     <div class="icon">
                         <img src="{{ url_for('static', filename='images/icons8-switch-100.webp') }}" alt="Networking device icon"  width="100" height="100">
                     </div>
                 </div>
                 <div class="col-md-4">
-                    <h3>Antennityöt ja -asennukset</h3>
-                    <p class="lead"> Antenniverkkotyöt (A):
-                        Yrityksellä on antenniverkkotöihin seuraavat mittalaitteet: 
-                        Näytöllinen spektritoiminnolla ja konstellaatiomittauksella varustettu tasomittari, joka soveltuu digitaalisten kuva-aaltojen (DVB-T, -T2, -C, -C2, -S, -S2) mittaukseen taajuusalueella 5 …2150 MHz (2400 MHz). Mittalaitteessa on bittivirhesuhteen (BER) sekä modulaatiovirhesuhteen (MER) mittausominaisuus.
-                        Kohinageneraattori, joka lähettää laajakaistaista kohinaa taajuusvastemittauksen herätesignaalina.
-                        Yleismittari
-                        Kaapelitutka
-                        Asennetut kaapeloinnit ja siihen liittyvät asennustyöt mitataan asiaankuuluvilla kalibroiduilla mittalaitteilla ja asiakkaalle luovutetaan pöytäkirjat.
-                    </p>
+                    <h3>Antenni</h3>
+                   <p>Palveluihimme kuuluvat antennijärjestelmien suunnittelu, asennus sekä
+                        huolto, kunnostus ja vikakorjaukset pääosin omakotitaloihin, kesämökeille ja kaapelitalouksille sekä huollamme vanhoja.
+                        <br>
+                        <br>
+                        Työtehtäviimme kuuluu mm.</p>
+                        <li>Antenniasennukset</li>
+                        <li>                  4G / 5G -asennukset
+                        </li>
+                        <li>                        Neuvovaa tarvikemyyntiä
+                        </li>
+                        <li>                        Antennin suuntaustyöt
+                        </li>
+                        <li>                        Antennijärjestelmien korjaukset ja vika-analyysit
+                        </li>
+                        <li>                        Lisäpisteiden asennukset
+                        </li>
+                        <li>                        Antenniverkon ja laitteiden mittaukset
+                        </li>
+                        <li>                        Antennivahvistimien asennustyöt ja säädöt
+                        </li>
+                        <li>                        LTE-häiriöiden korjaustyöt
+                        </li>
+                        <li>                        Uudisrakennusten antennityöt
+                        </li>
+                        <li>                        Yhteisantennivahvistimien uudelleenohjelmoinni
+                        </li>
+                        <br>
+
+                       <p>Asennetut kaapeloinnit ja siihen liittyvät asennustyöt mitataan asiaankuuluvilla kalibroiduilla mittalaitteilla ja asiakkaalle luovutetaan tarvittavat dokumentit
+                        
+                        Seti Oy on myöntänyt yritykselle AT- (antenni- ja tietoverkkotyöt) sekä OL- (valokuitutyöt) luokituksen.  </p>
                     <div class="icon">
                         <img src="{{ url_for('static', filename='images/icons8-installation-100.webp') }}" alt="Installation tools icon"  width="100" height="100">
                     </div>
                 </div>
                 <div class="col-md-4" style="align-items: center;">
                     <h3>Mittauspalvelut</h3>
-                    <p class="lead"> 
-                        Valokuituasennuksien mittaus
-                        Parikaapelointiasennuksien mittaus
-                        Antenniasennuksien mittaus
-                        Maaperän resistiivisyyden mittaus pylväsmaadoituksien suunnitteluun
-                        Vianhakumittaukset
-                        Asennetut kaapeloinnit ja siihen liittyvät asennustyöt mitataan asiaankuuluvilla kalibroiduilla mittalaitteilla ja asiakkaalle luovutetaan pöytäkirjat.
-                    </p>
+                  <li>Valokuitujen mittaus</li>  
+                        <li>Parikaapeleiden mittaus</li>
+                        <li>Antenniverkkojen mittaus</li>
+                        <li>Maaperän ominaisvastuksen eli ominaisresistanssin mittaus maastossa korkeajännitelinjoilla</li>
+                        <li> Maadoitusvastusmittaus käännepistemenetelmällä korkeajännitelinjoilla</li>
+                        <li>Hakkuu- ja kiinteistörajojen merkinnät korkeajännitelinjoilla</li>
+                        <li>Pylväspaikkamerkinnät korkeajännitelinjoilla</li>
+                        <p>Mittaukset suoritetaan asiaankuuluvilla kalibroiduilla mittalaitteilla ja asiakkaalle luovutetaan tarvittavat dokumentit.</p>
                     <div class="icon">
                         <img src="{{ url_for('static', filename='images/meter.webp') }}" alt="Meter icon"  width="100" height="100">
                     </div>
@@ -194,6 +196,37 @@
             </div>
         </div>
     </section>
+
+    <!-- About section -->
+<section id="values" class="py-5">
+    <div class="container">
+        <h1 class="text-center mb-4">Arvot</h1>
+        <div class="row">
+            <div class="col-md-10 mx-auto">
+                <div class="value">
+                    <h4>Tarkkuus</h4>
+                    Sovimme asiat riittävällä tarkkuudella.
+                </div>
+            <div class="value">
+                    <h4>Tarkkuus</h4>
+                     Sovimme asiat riittävällä tarkkuudella.
+                </div>
+                <div class="value">
+                    <h4>Pidämme sovituista asioista kiinni</h4>
+                    Teemme valmiiksi kaiken sen, mistä olemme sopineet.
+                </div>
+                <div class="value">
+                    <h4>Ketteryys ja huolellisuus</h4>
+                    Teemme sovitut työt nopeasti ja kerralla oikein.
+                </div>
+                <div class="value">
+                    <h4>Asiakkaat ja yhteistyökumppanit ovat meille tärkeitä</h4>
+                    Ajattelemme asiakkaidemme ja yhteistyökumppaniemme parasta.
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
 
 <!-- Contact info section -->
 <section id="contact-info" class="section">
@@ -205,7 +238,7 @@
                 <p class="lead">Hannu Matkoski</p>
                 <p class="lead">Valokuitu-, tietovekkotyöt ja konsultointi</p>
                 <p class="lead">
-                    puh. 040 777 8845 <br>
+                    <a href="callto:+358407778845">0407778845</a> <br>
                     <a href="mailto:hannu.matkoski@daxpower.com">Sähköposti</a> <br>
                     
                 </p>
@@ -216,7 +249,7 @@
                 <p class="lead">Valokuitu-, antenni-, tietovekkotyöt ja konsultointi</p>
 
                 <p class="lead">
-                    puh. 040 777 0302 <br>
+                    <a href="callto:+358407770302">040 777 0302</a> <br>
                     <a href="mailto:mikko.nikkola@daxpower.com">Sähköposti</a>
                 </p>
             </div>
@@ -225,8 +258,8 @@
                 <p class="lead">Richard Gustafsson</p>
                 <p class="lead">Konsultointi</p>
                 <p class="lead">
-                    050 338 3445 <br>
-                 <a href="mailto:richard.gustafsson@daxpower.com">Sähköpostii</a>
+                    <a href="callto:+358503383445">050 338 3445</a> <br>
+                 <a href="mailto:richard.gustafsson@daxpower.com">Sähköposti</a>
                 </p>
             </div>
         </div>
@@ -302,8 +335,8 @@
 <!-- Footer -->
 <footer class="text-center footer bg-light py-4">
     <div class="container">
-        <img src="{{ url_for('static', filename='images/daxtum_pieni3.png') }}" alt="Daxtum logo" height="35px" width="auto">
-        <p><strong>Daxpower Oy</strong><br>2378748-3<br>Varastokatu 9, 65100 Vaasa</p>
+             <img src="{{ url_for('static', filename='images/daxtum_pieni3.png') }}" alt="Daxtum logo" height="40px" width="auto">
+        <p style="padding: 10px 0"><strong>Daxpower Oy</strong><br>2378748-3<br>Varastokatu 9, 65100 Vaasa</p>
         <p>&copy; 2024 <a href="https://daxpower.com/" class="text-black">Daxpower.com</a></p>
     </div>
 </footer>

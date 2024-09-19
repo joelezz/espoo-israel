@@ -50,6 +50,10 @@ h3 {
     padding: 20px;
 }
 
+h1, h3 {
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3); /* Adds a soft shadow effect */
+}
+
 p {
     font-size: large;
 }
@@ -87,9 +91,14 @@ p {
 .nav-links {
     list-style: none;
     display: flex;
-    gap: 40px; /* Adjust the spacing between links */
+    gap: 40px;
     padding: 5px;
     margin: 0;
+    transition: all 0.3s ease-in-out; /* Smooth menu transition */
+}
+
+.nav-links.active {
+    display: flex;
 }
 
 .nav-links a {
@@ -114,7 +123,7 @@ p {
     background-image: url('{{ url_for("static", filename="images/hero.jpg") }}');
     background-size: cover;
     background-position: center;
-    height: 100vh;
+    height: calc(100vh - 60px); /* Subtracts the height of the navbar */
     display: flex;
     justify-content: center;
     align-items: center;
@@ -132,12 +141,14 @@ p {
 }
 
 .section {
-    padding: 80px 20px;
-    margin: 0 auto;
-    margin-bottom: 40px; /* Add margin to create space between sections */
-    background-color: #f9f9f9; /* Light background for contrast */
-    border-bottom: 1px solid #ddd; /* Subtle border for separation */
+    min-height: 100vh; /* Full screen height */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 2rem;
 }
+
+
 
 .footer {
     background-color: #dfdfdf !important;
@@ -147,37 +158,59 @@ p {
     padding: 50px;
 }
 
-#about {
-    background-color: #ffffff;
+/* Section-specific background colors */
+#hero {
+    background-color: #1a1a1a; /* Dark background for hero */
+    color: white; /* Light text */
 }
 
-#services {
-    background-color: #dfdfdf;
+#about {
+    background-color: #e9ecef; /*  Light grey background */
+    color: #333; /* Darker text */
 }
 
 #carousel {
-    background-color: #ffffff;
-    max-height: 50vh; /* Set the height to 50% of the viewport */
+    background-color: #e9ecef;
+
 }
 
-#aboutCarousel img {
-    object-fit: cover;
+.carousel-control-prev-icon, .carousel-control-next-icon {
+    background-color: rgba(0, 0, 0, 0.5); /* Add a background for better visibility */
+    border-radius: 50%;
+    padding: 10px;
+}
+
+.carousel-inner {
+    height: 50vh; /* This ensures a consistent height for the carousel container */
+}
+
+.carousel-item {
     height: 100%;
 }
 
-/* Contact Info Section */
-#contact-info {
-    background-color: #eaeaea;
-    height: auto; /* Adjust height to be dynamic */
-    padding: 20px; /* Add padding for better spacing */
-    box-sizing: border-box; /* Include padding and border in the element's total width and height */
+.carousel-item img {
+    width: 100%; /* Ensures that the image width matches the container */
+    height: 100%; /* Forces the image to fill the height of the carousel container */
+    object-fit: cover; /* Ensures the image maintains its aspect ratio and is cropped to fit */
 }
 
-/* Ota yhteyttä (Contact Us) Section */
+#services {
+    background-color: #ebebeb; /*  Another light grey shade */
+    color: #333;
+}
+
+#values {
+    background-color: #ebebeb;
+}
+
+#contact-info {
+    background-color: #e9ecef; /* Dark background for contact info */
+    color: rgb(0, 0, 0);
+}
+
 #contact {
-    background-color: #ffffff;
-    padding: 20px; /* Add padding for better spacing */
-    box-sizing: border-box; /* Include padding and border in the element's total width and height */
+    background-color: #f8f9fa;
+    color: #333;
 }
 
 .contact-row {
@@ -191,7 +224,7 @@ p {
     padding: 50px 20px;
     margin: 10px;
     flex-basis: 30%; /* Adjusts the width of each contact person */
-    background-color: #dfdfdf;
+    background-color: #f8f9fa;
 }
 
 .container {
@@ -200,6 +233,9 @@ p {
     padding: 20px; 
 }
 
+.value {
+    padding: 10px 0;
+}
 img {
     display: block;
     margin: 0 auto;
@@ -236,6 +272,7 @@ button[type="submit"] {
     border: none;
     border-radius: 5px;
     cursor: pointer;
+    transition: background-color 0.3s ease-in-out; /* Smooth transition */
 }
 
 button[type="submit"]:hover {
@@ -293,6 +330,11 @@ button[type="submit"]:hover {
     .contact-person {
         flex-basis: 100%; /* Full width for contact persons on mobile */
         padding: 20px; /* Add padding for better spacing */
+    }
+
+    #aboutCarousel {
+        width: 100%;
+        height: auto;
     }
 }
 

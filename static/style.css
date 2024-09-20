@@ -201,6 +201,7 @@ p {
 
 #values {
     background-color: #ebebeb;
+    min-height: 100vh;
 }
 
 #contact-info {

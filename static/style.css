@@ -181,7 +181,7 @@ p {
 }
 
 .carousel-inner {
-    height: 50vh; /* This ensures a consistent height for the carousel container */
+    height: 100%; /* This ensures a consistent height for the carousel container */
 }
 
 .carousel-item {
@@ -189,7 +189,7 @@ p {
 }
 
 .carousel-item img {
-    width: 100%; /* Ensures that the image width matches the container */
+    width: 60%; /* Ensures that the image width matches the container */
     height: 100%; /* Forces the image to fill the height of the carousel container */
     object-fit: cover; /* Ensures the image maintains its aspect ratio and is cropped to fit */
 }

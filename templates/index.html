@@ -79,7 +79,7 @@
 
 <!-- Carousel container -->
 <div class="container d-flex justify-content-center">
-    <div id="aboutCarousel" class="carousel slide mb-4" data-bs-ride="carousel" style="width: 100%; height: 50vh;">
+    <div id="aboutCarousel" class="carousel slide mb-4" data-bs-ride="carousel" style="width: 100%; height: 100vh;">
         <div class="carousel-indicators">
             <button type="button" data-bs-target="#aboutCarousel" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
             <button type="button" data-bs-target="#aboutCarousel" data-bs-slide-to="1" aria-label="Slide 2"></button>
@@ -87,13 +87,13 @@
         </div>
         <div class="carousel-inner">
             <div class="carousel-item active">
-                <img src="{{ url_for('static', filename='images/pic1.webp') }}" class="d-block mx-auto img-fluid" alt="First image description">
+                <img src="{{ url_for('static', filename='images/voimavirta.jpg') }}" class="d-block mx-auto img-fluid" alt="First image description">
             </div>
             <div class="carousel-item">
-                <img src="{{ url_for('static', filename='images/pic2.webp') }}" class="d-block mx-auto img-fluid" alt="Second image description">
+                <img src="{{ url_for('static', filename='images/telemasto.jpg') }}" class="d-block mx-auto img-fluid" alt="Second image description">
             </div>
             <div class="carousel-item">
-                <img src="{{ url_for('static', filename='images/pic3.webp') }}" class="d-block mx-auto img-fluid" alt="Third image description">
+                <img src="{{ url_for('static', filename='images/jakamo.jpg') }}" class="d-block mx-auto img-fluid" alt="Third image description">
             </div>
         </div>
         <button class="carousel-control-prev" type="button" data-bs-target="#aboutCarousel" data-bs-slide="prev">
@@ -106,6 +106,7 @@
         </button>
     </div>
 </div>
+
 
 
 </section>
@@ -252,7 +253,7 @@
             <div class="contact-person">
                 <img src="{{ url_for('static', filename='images/person.svg') }}" alt="icon" width="100" height="100">
                 <p class="lead">Hannu Matkoski</p>
-                <p class="lead">Valokuitu-, tietovekkotyöt ja konsultointi</p>
+                <p class="lead">Työnjohto, maastotyöt ja konsultointi</p>
                 <p class="lead">
                     <a href="callto:+358407778845">0407778845</a> <br>
                     <a href="mailto:hannu.matkoski@daxpower.com">Sähköposti</a> <br>
@@ -262,7 +263,7 @@
             <div class="contact-person">
                 <img src="{{ url_for('static', filename='images/person.svg') }}" alt="icon" width="100" height="100">
                 <p class="lead">Mikko Nikkola</p>
-                <p class="lead">Valokuitu-, antenni-, tietovekkotyöt ja konsultointi</p>
+                <p class="lead">Työnjohto, tietoliikenne- ja mittauspalvelut</p>
 
                 <p class="lead">
                     <a href="callto:+358407770302">040 777 0302</a> <br>
@@ -353,7 +354,8 @@
     <div class="container">
              <img src="{{ url_for('static', filename='images/daxtum_pieni3.png') }}" alt="Daxtum logo" height="40px" width="auto">
         <p style="padding: 10px 0"><strong>Daxpower Oy</strong><br>2378748-3<br>Varastokatu 9, 65100 Vaasa</p>
-        <p>&copy; 2024 <a href="https://daxpower.com/" class="text-black">Daxpower.com</a></p>
+        <img src="{{ url_for('static', filename='images/sertti.png') }}" class="d-block mx-auto" style="width: 250px; height: auto; padding: 10px;" alt="Sertifikaatti logot AT ja Easyasennus">
+           <p>&copy; 2024 <a href="https://daxpower.com/" class="text-black">Daxpower.com</a></p>
     </div>
 </footer>
 

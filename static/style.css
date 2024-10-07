@@ -154,6 +154,26 @@ p {
     background-color: #dfdfdf !important;
 }
 
+.footer a {
+    color: #007bff; /* Bootstrap primary color */
+    text-decoration: none;
+}
+
+.footer a:hover {
+    text-decoration: underline;
+}
+
+.footer .container {
+    display: flex;
+    justify-content: space-between; /* Aligns items to the edges of the container */
+    align-items: center; /* Vertically centers the items */
+    flex-wrap: wrap; /* Allows wrapping for smaller screens */
+}
+
+.footer img {
+    margin: 5px; /* Adds margin around the images */
+}
+
 .icon {
     padding: 50px;
 }
@@ -189,10 +209,11 @@ p {
 }
 
 .carousel-item img {
-    width: 60%; /* Ensures that the image width matches the container */
-    height: 100%; /* Forces the image to fill the height of the carousel container */
-    object-fit: cover; /* Ensures the image maintains its aspect ratio and is cropped to fit */
+    width: 90%; /* Set to 100% for full width on smaller screens */
+    height: auto; /* Let height adjust automatically */
+    object-fit: cover; /* Ensure the image maintains its aspect ratio and is cropped to fit */
 }
+
 
 #services {
     background-color: #ebebeb; /*  Another light grey shade */
@@ -337,6 +358,10 @@ button[type="submit"]:hover {
         width: 100%;
         height: auto;
     }
+
+    .carousel-item {
+        height: 60vh; /* Set a specific height for smaller screens */
+    }
 }
 
 @media screen and (max-width: 480px) {
@@ -362,5 +387,9 @@ button[type="submit"]:hover {
 
     button[type="submit"] {
         padding: 8px 16px; /* Adjust button padding for smaller screens */
+    }
+
+    .carousel-item {
+        height: 50vh; /* Further adjust for smaller screens if necessary */
     }
 }

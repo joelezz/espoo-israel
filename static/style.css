@@ -4,7 +4,11 @@ html, body {
     scroll-behavior: smooth;
     text-align: center;
     height: 100%;
+<<<<<<< HEAD
     padding-top: 45px;
+=======
+    padding-top: 45px; /* Adjust according to your navbar height */
+>>>>>>> efedbc1 (Preparing deployment to heroku)
 
 }
 
@@ -264,7 +268,21 @@ img {
 .useful-links h3 {
     font-weight: 700;
 }
+<<<<<<< HEAD
 .useful-links ul {
+=======
+
+/* Form header text */
+.header-text {
+    margin-top: 70px; 
+    font-size: 24px;
+}
+
+.errors {
+    color: red;
+    font-size: 14px;
+    list-style: none;
+>>>>>>> efedbc1 (Preparing deployment to heroku)
     padding: 0;
 }
 .useful-links li {

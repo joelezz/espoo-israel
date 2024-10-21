@@ -220,6 +220,11 @@ p {
 
 }
 
+#useful-links {
+    background-color: #e9ecef; /*  Light grey background */
+    color: #333; /* Darker text */
+}
+
 .carousel-control-prev-icon, .carousel-control-next-icon {
     background-color: rgba(0, 0, 0, 0.5); /* Add a background for better visibility */
     border-radius: 50%;
@@ -252,6 +257,33 @@ p {
 img {
     display: block;
     margin: 0 auto;
+}
+
+.useful-links h3 {
+    font-weight: 700;
+}
+.useful-links ul {
+    padding: 0;
+}
+.useful-links li {
+    list-style: none;
+    margin-bottom: 10px;
+}
+.link-item {
+    display: inline-block;
+    padding: 10px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+    text-decoration: none;
+    color: #007bff41;
+}
+.link-item:hover {
+    background-color: #007bff;
+    color: #fff;
+    text-decoration: none;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
 /* General form styles */

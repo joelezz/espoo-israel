@@ -4,6 +4,8 @@ html, body {
     scroll-behavior: smooth; /* Enables smooth scrolling between sections */
     text-align: center;
     height: 100%;
+    padding-top: 45px; /* Adjust according to your navbar height */
+
 }
 
 @keyframes fadeIn {
@@ -20,12 +22,14 @@ html, body {
 .hero h1 {
     opacity: 0;
     animation: fadeIn 1s ease-in forwards;
+    font-size: 4rem; /* Default size for larger screens */
 }
 
 .hero p {
     opacity: 0;
     animation: fadeIn 2s ease-in forwards;
     animation-delay: 0.5s; /* Delays animation start for 0.5s */
+    color: #ffffff;
 }
 
 .hero a {
@@ -51,72 +55,80 @@ h3 {
 }
 
 h1, h3 {
-    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3); /* Adds a soft shadow effect */
+    text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.5); /* Adds a soft shadow effect */
+    margin-top: 70px; 
 }
 
 p {
     font-size: large;
+    color: #1d1d1d;
 }
 
 .navbar {
-    display: flex;
-    justify-content: space-between; /* Adjust for space between logo and menu */
-    align-items: center;
-    padding: 10px 20px;
-    background-color: #ffffff;
-    position: fixed;
-    top: 0;
+    background-color: #007bff; /* Your primary color */
+    transition: background-color 0.5s ease; /* Smooth background transition */
+    z-index: 1000; /* Ensure navbar is above other content */
+    position: fixed; /* Make the navbar fixed */
+    top: 0; /* Position it at the top */
+    width: 100%; /* Full width */
+    padding: 10px 0; /* Optional: add some vertical padding */
+}
+
+.navbar:hover {
+    background-color: #0056b3; /* Darker shade on hover */
+}
+
+.nav-link {
+    position: relative; /* For pseudo-element */
+    color: rgb(0, 0, 0) !important; /*  Text color */
+    transition: color 0.3s ease; /* Smooth color transition */
+    margin: 0 25px; /* Padding around the link */
+}
+
+.nav-link::after {
+    content: '';
+    position: absolute;
     width: 100%;
-    z-index: 1000;
-}
-
-.navbar .logo img {
-    height: 50px;
-    width: auto;
-}
-
-.menu-icon {
-    display: none;
-    flex-direction: column;
-    cursor: pointer;
-}
-
-.menu-icon .bar {
-    width: 25px;
     height: 3px;
-    background-color: rgb(121, 121, 121);
-    margin: 4px 0;
+    background: #fff; /* White underline */
+    left: 0;
+    bottom: -5px; /* Adjust position */
+    transform: scaleX(0); /* Start hidden */
+    transition: transform 0.3s ease; /* Animation effect */
 }
 
-.nav-links {
-    list-style: none;
-    display: flex;
-    gap: 40px;
-    padding: 5px;
-    margin: 0;
-    transition: all 0.3s ease-in-out; /* Smooth menu transition */
+.nav-link:hover::after {
+    transform: scaleX(1); /* Show on hover */
 }
 
-.nav-links.active {
-    display: flex;
+.nav-link:hover {
+    color: #0084ff !important; /* Change color on hover */
 }
 
+/* Toggle button style */
+#menu-icon {
+    border: none; /* Remove default border */
+    background: transparent; /* Transparent background */
+}
+
+/* Updated hover effect */
+.nav-links a:hover {
+    color: #ffffff; /* Change text to white on hover */
+    background-color: #007bff; /* Use your brand color */
+    border-radius: 8px; /* Slightly rounded corners */
+    transform: translateY(-2px) scale(1.05); /* Slight lift and scaling effect */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Enhanced shadow effect */
+}
+
+/* Mobile view updates for nav links */
 .nav-links a {
-    display: inline-block;
-    padding: 10px 15px;
-    text-decoration: none;
-    color: rgb(0, 0, 0); /* Text color */
-    font-weight: bold;
-    position: relative;
-    transition: background-color 0.3s ease, transform 0.3s ease;
-    border-radius: 5px;
+    color: white; /* Ensures links are visible on mobile background */
 }
 
 .nav-links a:hover {
-    color: white !important; /* Ensure the text changes to white */
-    background-color: #c90202 !important; /* Red background on hover */
-    transform: scale(1.05);
+    background-color: #0056b3; /* Darker shade for hover effect on mobile */
 }
+
 
 /* Hero Section */
 .hero {
@@ -130,6 +142,18 @@ p {
     color: white;
     text-align: center;
     padding: 0 20px;
+    position: relative; /* Positioning for overlay */
+}
+
+.hero:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5); /* Dark overlay */
+    z-index: 1; /* Behind the text */
 }
 
 .hero-content {
@@ -138,6 +162,8 @@ p {
     background-color: rgba(0, 0, 0, 0.5);
     border-radius: 10px;
     text-align: center;
+    position: relative; /* Positioning for text above overlay */
+    z-index: 2; /* Ensure text is above overlay */
 }
 
 .section {
@@ -270,6 +296,12 @@ form {
     margin-right: auto;
 }
 
+/* Form header text */
+.header-text {
+    margin-top: 70px; 
+    font-size: 24px;
+}
+
 .errors {
     color: red;
     font-size: 14px;
@@ -288,18 +320,110 @@ textarea {
 }
 
 button[type="submit"] {
-    background-color: #ff3333;
+    background-color: #575aff;
     color: white;
     padding: 10px 20px;
-    border: none;
+    border: 1px solid #4a4dbf; /* Adding a border */
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3); /* Slightly deeper shadow */
     border-radius: 5px;
     cursor: pointer;
-    transition: background-color 0.3s ease-in-out; /* Smooth transition */
+    transition: background-color 0.3s ease-in-out, transform 0.3s ease-in-out; /* Smooth transition for both properties */
 }
 
 button[type="submit"]:hover {
-    background-color: #ff0000;
+    background-color: #4a4dbf; /* Darker shade for hover */
+    transform: scale(1.05); /* Slight increase in size */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2); /* Elevation effect */
 }
+
+button[type="submit"]:focus,
+.nav-links a:focus {
+    outline: 2px solid #007bff; /* Outline on focus */
+    outline-offset: 2px; /* Space between outline and element */
+}
+
+.card {
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Smooth transition */
+}
+
+.card:hover {
+    transform: scale(1.05);
+    transition: all 0.3s ease-in-out;
+}
+
+.card-title {
+    font-weight: 600;
+}
+
+.text-primary {
+    color: #007bff;
+}
+
+.card-text i {
+    margin-right: 5px;
+}
+
+.card-img-top {
+    border-bottom: 3px solid #007bff;
+}
+
+.card:hover {
+    transform: scale(1.05);
+    transition: all 0.3s ease-in-out;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2); /* Elevation effect */
+}
+
+.card-title {
+    font-weight: 600;
+}
+
+.text-primary {
+    color: #007bff;
+}
+
+.card-text i {
+    margin-right: 5px;
+}
+
+.card-img-top {
+    border-bottom: 3px solid #007bff;
+}
+
+footer .facebook-icon {
+    color: #525252;
+    transition: transform 0.3s ease, color 0.3s ease;
+    text-decoration: none; /* Remove underline if needed */
+}
+
+/* Change color on hover */
+footer .facebook-icon:hover {
+    color: #5980d4; /* Initial Facebook blue color */
+    transform: scale(1.2);
+     /* Change to a darker color or another color */
+}
+
+/* Ensure the container allows the Facebook widget to expand */
+.container {
+    max-width: 1000px; /* Adjust as needed */
+}
+
+.fb-page {
+    width: 100%; /* Ensures the full width of container */
+    max-width: 100%; /* Maximum width */
+    height: auto; /* Maintain the aspect ratio */
+    border: 1px solid #ddd; /* Optional border */
+    border-radius: 8px; /* Optional rounded corners */
+    overflow: hidden; /* Clipping overflow */
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* shadow */
+}
+
+.recaptcha-container {
+    display: flex;               /* Use flexbox */
+    justify-content: center;     /* Center items horizontally */
+    margin-top: 15px;           /* Add some margin for spacing */
+    margin-bottom: 15px;
+}
+
 
 /* Media Queries for Mobile Screens */
 @media screen and (max-width: 768px) {
@@ -335,6 +459,10 @@ button[type="submit"]:hover {
         padding: 20px;
     }
 
+    .hero h1 {
+        font-size: 3rem; /* Smaller size for mobile */
+    }
+
     .hero-content {
         max-width: 100%;
         padding: 10px;
@@ -359,10 +487,16 @@ button[type="submit"]:hover {
         height: auto;
     }
 
+    .carousel {
+        height: auto;
+    }
+
     .carousel-item {
         height: 60vh; /* Set a specific height for smaller screens */
     }
 }
+
+
 
 @media screen and (max-width: 480px) {
     h1 {

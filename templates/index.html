@@ -280,6 +280,14 @@
                     <span class="error">{{ error }}</span>
                 {% endfor %}
             </div>
+
+            <div class="form-group">
+                <label for="accept_policy">
+                    {{ form.accept_policy() }}
+                    Hyväksyn 
+                    <a href="https://suomi-israel.fi/suomi-israel-yhdistysten-liitto-ryn-tietosuojaseloste/" target="_blank">tietosuojaselosteen</a>
+                </label>
+            </div>
             
             <!-- Google reCAPTCHA widget -->
             <div class="recaptcha-container">

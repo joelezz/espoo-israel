@@ -318,6 +318,7 @@ label {
 /* Adjusting reCAPTCHA container */
 .recaptcha-container {
     margin-top: 20px; /* Space above the reCAPTCHA */
+    align-items: left; /* Align text to the left */
 }
 
 textarea {

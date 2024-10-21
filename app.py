@@ -1,7 +1,5 @@
 import os
-import requests  
 from flask import Flask, request, redirect, url_for, render_template, flash
-from markupsafe import Markup
 from flask_mail import Mail, Message
 from flask_wtf.csrf import CSRFProtect
 from contact_form import ContactForm

@@ -159,7 +159,7 @@ p {
 .hero-content {
     max-width: 800px;
     padding: 20px;
-    background-color: rgba(0, 0, 0, 0.5);
+    background-color: rgba(0, 0, 0, 0.151);
     border-radius: 10px;
     text-align: center;
     position: relative; /* Positioning for text above overlay */
@@ -240,41 +240,6 @@ p {
     object-fit: cover; /* Ensure the image maintains its aspect ratio and is cropped to fit */
 }
 
-
-#services {
-    background-color: #ebebeb; /*  Another light grey shade */
-    color: #333;
-}
-
-#values {
-    background-color: #ebebeb;
-    min-height: 100vh;
-}
-
-#contact-info {
-    background-color: #e9ecef; /* Dark background for contact info */
-    color: rgb(0, 0, 0);
-}
-
-#contact {
-    background-color: #f8f9fa;
-    color: #333;
-}
-
-.contact-row {
-    display: flex;
-    justify-content: space-between;
-    flex-wrap: wrap; /* Allows wrapping if needed */
-}
-
-.contact-person {
-    text-align: center;
-    padding: 50px 20px;
-    margin: 10px;
-    flex-basis: 30%; /* Adjusts the width of each contact person */
-    background-color: #f8f9fa;
-}
-
 .container {
     max-width: 1200px; /* Set a max width for the container */
     margin: 0 auto;
@@ -289,26 +254,71 @@ img {
     margin: 0 auto;
 }
 
-form {
-    margin-top: 20px;
-    max-width: 600px;
-    margin-left: auto;
-    margin-right: auto;
+/* General form styles */
+.contact-form {
+    background-color: #ffffff; /* Light background for contrast */
+    padding: 20px;
+    border-radius: 8px; /* Rounded corners */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+    margin: 0 auto; /* Center the form */
+    max-width: 600px; /* Maximum width for the form */
 }
 
-/* Form header text */
-.header-text {
-    margin-top: 70px; 
-    font-size: 24px;
+/* Form group styles */
+.form-group {
+    margin-bottom: 20px; /* Space between form groups */
+    text-align: left; /* Align text to the left */
 }
 
-.errors {
-    color: red;
-    font-size: 14px;
-    list-style: none;
-    padding: 0;
+/* Label styles */
+label {
+    display: block; /* Block display for labels */
+    margin-bottom: 5px; /* Space between label and input */
+    font-weight: bold; /* Bold for better visibility */
 }
 
+/* Input styles */
+.form-control {
+    width: 100%; /* Full width of the container */
+    padding: 10px; /* Inner padding */
+    border: 1px solid #ccc; /* Light gray border */
+    border-radius: 5px; /* Rounded corners */
+    box-sizing: border-box; /* Include padding in width/height calculations */
+    transition: border-color 0.3s; /* Smooth transition for border */
+}
+
+/* Input focus state */
+.form-control:focus {
+    border-color: #575aff; /* Change border color on focus */
+    outline: none; /* Remove default outline */
+}
+
+/* Error message styles */
+.error {
+    color: red; /* Red color for error messages */
+    font-size: 14px; /* Font size for error messages */
+}
+
+/* Button styles */
+.submit-button {
+    background-color: #575aff; /* Primary button color */
+    color: white; /* White text */
+    padding: 10px 20px; /* Button padding */
+    border: none; /* Remove border */
+    border-radius: 5px; /* Rounded corners */
+    cursor: pointer; /* Pointer cursor on hover */
+    transition: background-color 0.3s, transform 0.3s; /* Smooth transition */
+}
+
+.submit-button:hover {
+    background-color: #4a4dbf; /* Darker shade on hover */
+    transform: scale(1.05); /* Slight lift on hover */
+}
+
+/* Adjusting reCAPTCHA container */
+.recaptcha-container {
+    margin-top: 20px; /* Space above the reCAPTCHA */
+}
 
 textarea {
     width: 100%; /* Make textarea full width of its container */

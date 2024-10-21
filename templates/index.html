@@ -62,7 +62,7 @@
                 <h1 class="display-4">Tervetuloa Espoon Suomi-Israel Yhdistyksen sivustolle</h1>
                 <p class="lead">Espoon Suomi-Israel yhdistyksen missiona on vahvistaa Espoon ja Israelin välistä yhteistyötä bisneksen, teknologian ja innovaation alueilla.</p> 
                     <p class="lead">Liity jäseneksi nyt!</p>
-                <a href="#contact" class="btn btn-primary btn-lg">Liity jäseneksi</a>
+                <a href="#contact" class="btn btn-primary btn-lg">Liity</a>
             </div>
     </section>
 
@@ -206,97 +206,91 @@
         <div class="header-text">
             <h1>Liity jäseneksi</h1>
         </div>
+        
         {% with messages = get_flashed_messages() %}
             {% if messages %}
-                <ul>
-                {% for message in messages %}
-                    <li>{{ message }}</li>
-                {% endfor %}
+                <ul class="flash-messages">
+                    {% for message in messages %}
+                        <li>{{ message }}</li>
+                    {% endfor %}
                 </ul>
             {% endif %}
         {% endwith %}
 
-        <form method="post" action="/">
+        <form method="post" action="/" class="contact-form">
             {{ form.csrf_token }}
-        
-            <p>
+
+            <div class="form-group">
                 {{ form.name.label }}<br>
                 {{ form.name(size=32) }}<br>
                 {% for error in form.name.errors %}
-                    <span style="color: red;">[{{ error }}]</span>
+                    <span class="error">{{ error }}</span>
                 {% endfor %}
-            </p>
+            </div>
 
-            <p>
+            <div class="form-group">
                 {{ form.address.label }}<br>
                 {{ form.address(size=32) }}<br>
                 {% for error in form.address.errors %}
-                    <span style="color: red;">[{{ error }}]</span>
+                    <span class="error">{{ error }}</span>
                 {% endfor %}
-            </p>
+            </div>
 
-            <p>
+            <div class="form-group">
                 {{ form.postal_code.label }}<br>
                 {{ form.postal_code(size=32) }}<br>
                 {% for error in form.postal_code.errors %}
-                    <span style="color: red;">[{{ error }}]</span>
+                    <span class="error">{{ error }}</span>
                 {% endfor %}
-            </p>
+            </div>
 
-            <p>
+            <div class="form-group">
                 {{ form.city.label }}<br>
                 {{ form.city(size=32) }}<br>
                 {% for error in form.city.errors %}
-                    <span style="color: red;">[{{ error }}]</span>
+                    <span class="error">{{ error }}</span>
                 {% endfor %}
-            </p>
+            </div>
             
-            <p>
+            <div class="form-group">
                 {{ form.email.label }}<br>
                 {{ form.email(size=32) }}<br>
                 {% for error in form.email.errors %}
-                    <span style="color: red;">[{{ error }}]</span>
+                    <span class="error">{{ error }}</span>
                 {% endfor %}
-            </p>
+            </div>
             
-            <p>
+            <div class="form-group">
                 {{ form.phone.label }}<br>
                 {{ form.phone(size=32) }}<br>
                 {% for error in form.phone.errors %}
-                    <span style="color: red;">[{{ error }}]</span>
+                    <span class="error">{{ error }}</span>
                 {% endfor %}
-            </p>
+            </div>
 
-            <p>
+            <div class="form-group">
                 {{ form.join.label }}<br>
                 {{ form.join() }}<br>
-            </p>
+            </div>
             
-            <p>
+            <div class="form-group">
                 {{ form.message.label }}<br>
                 {{ form.message(rows=4, cols=40) }}<br>
                 {% for error in form.message.errors %}
-                    <span style="color: red;">[{{ error }}]</span>
+                    <span class="error">{{ error }}</span>
                 {% endfor %}
-            </p>
-                 <!-- Google reCAPTCHA widget -->
-                 <div class="recaptcha-container">
-                    {{ form.recaptcha }}
-                </div> 
-
-                <p><button type="submit">Liity</button></p>
+            </div>
             
-            {% with messages = get_flashed_messages() %}
-                {% if messages %}
-                    <ul>
-                        {% for message in messages %}
-                            <li>{{ message }}</li>
-                        {% endfor %}
-                    </ul>
-                {% endif %}
-            {% endwith %}
+            <!-- Google reCAPTCHA widget -->
+            <div class="recaptcha-container">
+                {{ form.recaptcha }}
+            </div> 
+
+            <p><button type="submit" class="submit-button">Liity</button></p>
         </form>
-        
+    </div>
+</section>
+
         <!-- Footer -->
         <footer class="text-center footer bg-light py-4">
             <div class="container d-flex flex-column align-items-center">

@@ -6,7 +6,6 @@ email_validator==2.2.0
 Flask==3.0.3
 Flask-Mail==0.9.1
 Flask-WTF==1.2.1
-flask-recaptcha
 gunicorn==23.0.0
 idna==3.10
 itsdangerous==2.2.0
@@ -17,3 +16,4 @@ python-dotenv==1.0.0
 timer==0.1.1
 Werkzeug==3.0.4
 WTForms==3.1.2
+requests==2.30.0

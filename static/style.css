@@ -1,10 +1,10 @@
 html, body {
     margin: 0;
     font-family: 'Roboto', sans-serif;
-    scroll-behavior: smooth; /* Enables smooth scrolling between sections */
+    scroll-behavior: smooth;
     text-align: center;
     height: 100%;
-    padding-top: 45px; /* Adjust according to your navbar height */
+    padding-top: 45px;
 
 }
 
@@ -240,9 +240,11 @@ p {
 }
 
 .carousel-item img {
-    width: 90%; /* Set to 100% for full width on smaller screens */
-    height: auto; /* Let height adjust automatically */
-    object-fit: cover; /* Ensure the image maintains its aspect ratio and is cropped to fit */
+    width: 100%; /* Ensures the image takes up full width */
+    height: 100vh; /* Set a fixed height for uniformity */
+    object-fit: contain; /* Ensures the images maintain aspect ratio and crop to fill */
+    display: block;
+    margin: 0 auto;
 }
 
 .container {

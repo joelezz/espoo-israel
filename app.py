@@ -36,9 +36,9 @@ recaptcha = ReCaptcha(app=app)
 
 # Flask app config
 app.config['SECRET_KEY'] = os.getenv('SECRET_KEY', 'secret-key')
-app.config['MAIL_SERVER'] = 'daxpower.com'
+app.config['MAIL_SERVER'] = 'send.one.com'
 app.config['MAIL_PORT'] = 465
-app.config['MAIL_USERNAME'] = 'lomakkeet@daxpower.com'
+app.config['MAIL_USERNAME'] = 'moi@espoo-israel.fi'
 app.config['MAIL_PASSWORD'] = os.getenv('EMAIL_PASSWORD')
 app.config['MAIL_USE_TLS'] = False
 app.config['MAIL_USE_SSL'] = True
@@ -56,8 +56,14 @@ def home():
     if form.validate_on_submit():
         name = form.name.data
         email = form.email.data
+        phone = form.phone.data
+        address = form.address.data
+        postal_code = form.postal_code.data
+        city = form.city.data
         join = form.join.data
         message = form.message.data
+        accept_policy = form.accept_policy.data
+
 
         # Capture the reCAPTCHA response
         recaptcha_response = request.form.get('g-recaptcha-response')
@@ -71,9 +77,9 @@ def home():
         # Process the form (e.g., send email)
         try:
             msg = Message(f"New Contact Form Submission from {name}",
-                          sender='lomakkeet@daxpower.com',
-                          recipients=["joel.ezzahid@gmail.com", "zzjoe@tuta.io"])
-            msg.body = f"Name: {name}\nEmail: {email}\nJoin: {join}\nMessage: {message}"
+                          sender='moi@espoo-israel.fi',
+                          recipients=["info@espoo-israel.fi", "espoo.israel@gmail.com"])
+            msg.body = f"Nimi: {name}\nSähköposti: {email}\nHaluan liittyä jäseneksi: {join}\nOsite: {address}\nPostiosoite: {postal_code}\nPuhelin: {phone}\nHyväksyn ehdot: {accept_policy}\nViestisi: {message}"
             mail.send(msg)
             flash("Message sent successfully!")
             return redirect(url_for('thank_you'))
@@ -90,7 +96,7 @@ def home():
 def thank_you():
     if recaptcha.verify():
         # SUCCESS: Handle successful form submission
-        return "Form submitted successfully!"
+        return "Lomake toimitettu onnistuneesti, laitamme sinulle lisätiedot mahdollisimman pian!"
     else:
         # FAILED: Handle failed validation
         return "reCAPTCHA validation failed. Please try again.", 400

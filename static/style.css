@@ -1,0 +1,574 @@
+html, body {
+    margin: 0;
+    font-family: 'Roboto', sans-serif;
+    scroll-behavior: smooth;
+    text-align: center;
+    height: 100%;
+    padding-top: 45px;
+
+}
+
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.hero h1 {
+    opacity: 0;
+    animation: fadeIn 1s ease-in forwards;
+    font-size: 4rem; /* Default size for larger screens */
+}
+
+.hero p {
+    opacity: 0;
+    animation: fadeIn 2s ease-in forwards;
+    animation-delay: 0.5s; /* Delays animation start for 0.5s */
+    color: #ffffff;
+}
+
+.hero a {
+    opacity: 0;
+    animation: fadeIn 3s ease-in forwards;
+    animation-delay: 1s; /* Delays animation start for 1s */
+}
+
+h1 {
+    text-shadow: #000000;
+    font-size: 72px;
+    font-weight: 400;
+    font-style: normal;
+    padding: 20px;
+}
+
+h3 {
+    text-shadow: #000000;
+    font-size: 48px;
+    font-weight: 400;
+    font-style: normal;
+    padding: 20px;
+}
+
+h1, h3 {
+    text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.5); /* Adds a soft shadow effect */
+    margin-top: 70px; 
+}
+
+p {
+    font-size: large;
+    color: #1d1d1d;
+}
+
+.navbar {
+    background-color: #007bff; /* Your primary color */
+    transition: background-color 0.5s ease; /* Smooth background transition */
+    z-index: 1000; /* Ensure navbar is above other content */
+    position: fixed; /* Make the navbar fixed */
+    top: 0; /* Position it at the top */
+    width: 100%; /* Full width */
+    padding: 10px 0; /* Optional: add some vertical padding */
+}
+
+.navbar:hover {
+    background-color: #0056b3; /* Darker shade on hover */
+}
+
+.nav-link {
+    position: relative; /* For pseudo-element */
+    color: rgb(0, 0, 0) !important; /*  Text color */
+    transition: color 0.3s ease; /* Smooth color transition */
+    margin: 0 25px; /* Padding around the link */
+}
+
+.nav-link::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 3px;
+    background: #fff; /* White underline */
+    left: 0;
+    bottom: -5px; /* Adjust position */
+    transform: scaleX(0); /* Start hidden */
+    transition: transform 0.3s ease; /* Animation effect */
+}
+
+.nav-link:hover::after {
+    transform: scaleX(1); /* Show on hover */
+}
+
+.nav-link:hover {
+    color: #0084ff !important; /* Change color on hover */
+}
+
+/* Toggle button style */
+#menu-icon {
+    border: none; /* Remove default border */
+    background: transparent; /* Transparent background */
+}
+
+/* Updated hover effect */
+.nav-links a:hover {
+    color: #ffffff; /* Change text to white on hover */
+    background-color: #007bff; /* Use your brand color */
+    border-radius: 8px; /* Slightly rounded corners */
+    transform: translateY(-2px) scale(1.05); /* Slight lift and scaling effect */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Enhanced shadow effect */
+}
+
+/* Mobile view updates for nav links */
+.nav-links a {
+    color: white; /* Ensures links are visible on mobile background */
+}
+
+.nav-links a:hover {
+    background-color: #0056b3; /* Darker shade for hover effect on mobile */
+}
+
+
+/* Hero Section */
+.hero {
+    background-image: url('{{ url_for("static", filename="images/hero.jpg") }}');
+    background-size: cover;
+    background-position: center;
+    height: calc(100vh - 60px); /* Subtracts the height of the navbar */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    text-align: center;
+    padding: 0 20px;
+    position: relative; /* Positioning for overlay */
+}
+
+.hero:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5); /* Dark overlay */
+    z-index: 1; /* Behind the text */
+}
+
+.hero-content {
+    max-width: 800px;
+    padding: 20px;
+    background-color: rgba(0, 0, 0, 0.151);
+    border-radius: 10px;
+    text-align: center;
+    position: relative; /* Positioning for text above overlay */
+    z-index: 2; /* Ensure text is above overlay */
+}
+
+.section {
+    min-height: 100vh; /* Full screen height */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 2rem;
+}
+
+
+
+.footer {
+    background-color: #dfdfdf !important;
+}
+
+.footer a {
+    color: #007bff; /* Bootstrap primary color */
+    text-decoration: none;
+}
+
+.footer a:hover {
+    text-decoration: underline;
+}
+
+.footer .container {
+    display: flex;
+    justify-content: space-between; /* Aligns items to the edges of the container */
+    align-items: center; /* Vertically centers the items */
+    flex-wrap: wrap; /* Allows wrapping for smaller screens */
+}
+
+.footer img {
+    margin: 5px; /* Adds margin around the images */
+}
+
+.icon {
+    padding: 50px;
+}
+
+/* Section-specific background colors */
+#hero {
+    background-color: #979797; /* Light background for hero */
+    color: white; /* Light text */
+}
+
+#about {
+    background-color: #e9ecef; /*  Light grey background */
+    color: #333; /* Darker text */
+}
+
+#carousel {
+    background-color: #e9ecef;
+
+}
+
+#useful-links {
+    background-color: #e9ecef; /*  Light grey background */
+    color: #333; /* Darker text */
+}
+
+.carousel-control-prev-icon, .carousel-control-next-icon {
+    background-color: rgba(0, 0, 0, 0.5); /* Add a background for better visibility */
+    border-radius: 50%;
+    padding: 10px;
+}
+
+.carousel-inner {
+    height: 100%; /* This ensures a consistent height for the carousel container */
+}
+
+.carousel-item {
+    height: 100%;
+}
+
+.carousel-item img {
+    width: 100%; /* Ensures the image takes up full width */
+    height: 100vh; /* Set a fixed height for uniformity */
+    object-fit: contain; /* Ensures the images maintain aspect ratio and crop to fill */
+    display: block;
+    margin: 0 auto;
+}
+
+.container {
+    max-width: 1200px; /* Set a max width for the container */
+    margin: 0 auto;
+    padding: 20px; 
+}
+
+.value {
+    padding: 10px 0;
+}
+img {
+    display: block;
+    margin: 0 auto;
+}
+
+.useful-links h3 {
+    font-weight: 700;
+}
+.useful-links ul {
+    padding: 0;
+}
+.useful-links li {
+    list-style: none;
+    margin-bottom: 10px;
+}
+.link-item {
+    display: inline-block;
+    padding: 10px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+    text-decoration: none;
+    color: #007bff41;
+}
+.link-item:hover {
+    background-color: #007bff;
+    color: #fff;
+    text-decoration: none;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* General form styles */
+.contact-form {
+    background-color: #ffffff; /* Light background for contrast */
+    padding: 20px;
+    border-radius: 8px; /* Rounded corners */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+    margin: 0 auto; /* Center the form */
+    max-width: 600px; /* Maximum width for the form */
+}
+
+/* Form group styles */
+.form-group {
+    margin-bottom: 20px; /* Space between form groups */
+    text-align: left; /* Align text to the left */
+}
+
+/* Label styles */
+label {
+    display: block; /* Block display for labels */
+    margin-bottom: 5px; /* Space between label and input */
+    font-weight: bold; /* Bold for better visibility */
+}
+
+/* Input styles */
+.form-control {
+    width: 100%; /* Full width of the container */
+    padding: 10px; /* Inner padding */
+    border: 1px solid #ccc; /* Light gray border */
+    border-radius: 5px; /* Rounded corners */
+    box-sizing: border-box; /* Include padding in width/height calculations */
+    transition: border-color 0.3s; /* Smooth transition for border */
+}
+
+/* Input focus state */
+.form-control:focus {
+    border-color: #575aff; /* Change border color on focus */
+    outline: none; /* Remove default outline */
+}
+
+/* Error message styles */
+.error {
+    color: red; /* Red color for error messages */
+    font-size: 14px; /* Font size for error messages */
+}
+
+/* Button styles */
+.submit-button {
+    background-color: #575aff; /* Primary button color */
+    color: white; /* White text */
+    padding: 10px 20px; /* Button padding */
+    border: none; /* Remove border */
+    border-radius: 5px; /* Rounded corners */
+    cursor: pointer; /* Pointer cursor on hover */
+    transition: background-color 0.3s, transform 0.3s; /* Smooth transition */
+}
+
+.submit-button:hover {
+    background-color: #4a4dbf; /* Darker shade on hover */
+    transform: scale(1.05); /* Slight lift on hover */
+}
+
+/* Adjusting reCAPTCHA container */
+.recaptcha-container {
+    margin-top: 20px; /* Space above the reCAPTCHA */
+    align-items: left; /* Align text to the left */
+}
+
+textarea {
+    width: 100%; /* Make textarea full width of its container */
+    height: 150px; /* Adjust height as needed */
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box; /* Include padding and border in the element's total width and height */
+}
+
+button[type="submit"] {
+    background-color: #575aff;
+    color: white;
+    padding: 10px 20px;
+    border: 1px solid #4a4dbf; /* Adding a border */
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3); /* Slightly deeper shadow */
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease-in-out, transform 0.3s ease-in-out; /* Smooth transition for both properties */
+}
+
+button[type="submit"]:hover {
+    background-color: #4a4dbf; /* Darker shade for hover */
+    transform: scale(1.05); /* Slight increase in size */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2); /* Elevation effect */
+}
+
+button[type="submit"]:focus,
+.nav-links a:focus {
+    outline: 2px solid #007bff; /* Outline on focus */
+    outline-offset: 2px; /* Space between outline and element */
+}
+
+.card {
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Smooth transition */
+}
+
+.card:hover {
+    transform: scale(1.05);
+    transition: all 0.3s ease-in-out;
+}
+
+.card-title {
+    font-weight: 600;
+}
+
+.text-primary {
+    color: #007bff;
+}
+
+.card-text i {
+    margin-right: 5px;
+}
+
+.card-img-top {
+    border-bottom: 3px solid #007bff;
+}
+
+.card:hover {
+    transform: scale(1.05);
+    transition: all 0.3s ease-in-out;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2); /* Elevation effect */
+}
+
+.card-title {
+    font-weight: 600;
+}
+
+.text-primary {
+    color: #007bff;
+}
+
+.card-text i {
+    margin-right: 5px;
+}
+
+.card-img-top {
+    border-bottom: 3px solid #007bff;
+}
+
+footer .facebook-icon {
+    color: #525252;
+    transition: transform 0.3s ease, color 0.3s ease;
+    text-decoration: none; /* Remove underline if needed */
+}
+
+/* Change color on hover */
+footer .facebook-icon:hover {
+    color: #5980d4; /* Initial Facebook blue color */
+    transform: scale(1.2);
+     /* Change to a darker color or another color */
+}
+
+/* Ensure the container allows the Facebook widget to expand */
+.container {
+    max-width: 1000px; /* Adjust as needed */
+}
+
+.fb-page {
+    width: 100%; /* Ensures the full width of container */
+    max-width: 100%; /* Maximum width */
+    height: auto; /* Maintain the aspect ratio */
+    border: 1px solid #ddd; /* Optional border */
+    border-radius: 8px; /* Optional rounded corners */
+    overflow: hidden; /* Clipping overflow */
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* shadow */
+}
+
+.recaptcha-container {
+    display: flex;               /* Use flexbox */
+    justify-content: center;     /* Center items horizontally */
+    margin-top: 15px;           /* Add some margin for spacing */
+    margin-bottom: 15px;
+}
+
+
+/* Media Queries for Mobile Screens */
+@media screen and (max-width: 768px) {
+    .menu-icon {
+        display: flex;
+    }
+
+    .nav-links {
+        display: none;
+        flex-direction: column;
+        gap: 10px;
+        background-color: #333;
+        position: absolute;
+        top: 60px;
+        right: 20px; /* Adjust to your liking */
+        padding: 10px;
+        border-radius: 5px;
+        width: 200px; /* Set a width for mobile menu */
+    }
+
+    .nav-links.active {
+        display: flex;
+    }
+
+    .nav-links a {
+        color: white;
+        text-align: center;
+        padding: 10px;
+    }
+
+    .hero {
+        height: auto; /* Adjust hero section height for mobile */
+        padding: 20px;
+    }
+
+    .hero h1 {
+        font-size: 3rem; /* Smaller size for mobile */
+    }
+
+    .hero-content {
+        max-width: 100%;
+        padding: 10px;
+    }
+
+    #contact-info, #contact {
+        padding: 10px; /* Adjust padding for mobile screens */
+    }
+
+    .contact-row {
+        flex-direction: column; /* Stack contact persons vertically on mobile */
+        gap: 20px; /* Add space between stacked items */
+    }
+
+    .contact-person {
+        flex-basis: 100%; /* Full width for contact persons on mobile */
+        padding: 20px; /* Add padding for better spacing */
+    }
+
+    #aboutCarousel {
+        width: 100%;
+        height: auto;
+    }
+
+    .carousel {
+        height: auto;
+    }
+
+    .carousel-item {
+        height: 60vh; /* Set a specific height for smaller screens */
+    }
+}
+
+
+
+@media screen and (max-width: 480px) {
+    h1 {
+        font-size: 48px; /* Adjust font size for smaller screens */
+    }
+
+    h3 {
+        font-size: 36px; /* Adjust font size for smaller screens */
+    }
+
+    p {
+        font-size: medium; /* Adjust font size for smaller screens */
+    }
+
+    .hero-content {
+        padding: 10px;
+    }
+
+    .container {
+        padding: 10px; /* Reduced padding for smaller screens */
+    }
+
+    button[type="submit"] {
+        padding: 8px 16px; /* Adjust button padding for smaller screens */
+    }
+
+    .carousel-item {
+        height: 50vh; /* Further adjust for smaller screens if necessary */
+    }
+}

@@ -1,0 +1,4 @@
+{
+    "appService.defaultWebAppToDeploy": "/subscriptions/bc9caefc-9a98-4ad2-83c8-bfafb23e1d6e/resourceGroups/resource1/providers/Microsoft.Web/sites/daxpower",
+    "appService.deploySubpath": "."
+}

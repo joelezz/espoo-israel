@@ -78,14 +78,15 @@ def home():
         try:
             msg = Message(f"New Contact Form Submission from {name}",
                           sender='moi@espoo-israel.fi',
-                          recipients=["info@espoo-israel.fi", "espoo.israel@gmail.com"])
-            msg.body = f"Nimi: {name}\nSähköposti: {email}\nHaluan liittyä jäseneksi: {join}\nOsite: {address}\nPostiosoite: {postal_code}\nPuhelin: {phone}\nHyväksyn ehdot: {accept_policy}\nViestisi: {message}"
+                          #recipients=["info@espoo-israel.fi", "espoo.israel@gmail.com",
+                          recipients=["zzjoe@tuta.io", "joel.ezzahid@gmail.com"])
+            msg.body = f"Nimi: {name}\nSähköposti: {email}\nHaluan liittyä jäseneksi: {join}\nOsoite: {address}\nPostinumero: {postal_code}\nPuhelin: {phone}\nHyväksyn ehdot: {accept_policy}\nViestisi: {message}"
             mail.send(msg)
-            flash("Message sent successfully!")
+            flash("Viestisi toimitettiin onnistuneesti!")
             return redirect(url_for('thank_you'))
         except Exception as e:
             app.logger.error(f"Email sending failed: {str(e)}")
-            flash("Failed to send message. Please try again later.")
+            flash("Viestin lähetys epäonnistui. Yritä myöhemmin uudestaan.")
             return redirect(url_for('home'))
 
     return render_template('index.html', form=form)

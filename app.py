@@ -66,12 +66,12 @@ def home():
 
 
         # Capture the reCAPTCHA response
-        recaptcha_response = request.form.get('g-recaptcha-response')
+        #recaptcha_response = request.form.get('g-recaptcha-response')
         
-        if not recaptcha_response:
+        """if not recaptcha_response:
             app.logger.warning("No reCAPTCHA response received.")
             flash("Please complete the reCAPTCHA verification.")
-            return redirect(url_for('home'))
+            return redirect(url_for('home'))"""
 
 
         # Process the form (e.g., send email)

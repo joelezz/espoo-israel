@@ -2,11 +2,11 @@ import os
 from flask import Flask, request, redirect, url_for, render_template, flash
 from flask_mail import Mail, Message
 from flask_wtf.csrf import CSRFProtect
-from app.contact_form import ContactForm
+from contact_form import ContactForm
 import logging
 from logging import FileHandler
 from dotenv import load_dotenv
-from app.flask_recaptcha import ReCaptcha
+from flask_recaptcha import ReCaptcha
 
 
 

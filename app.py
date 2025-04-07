@@ -6,7 +6,6 @@ from contact_form import ContactForm
 import logging
 from logging import FileHandler
 from dotenv import load_dotenv
-from flask_recaptcha import ReCaptcha
 
 
 
@@ -21,35 +20,33 @@ if not app.debug:
     file_handler.setLevel(logging.INFO)
     app.logger.addHandler(file_handler)
 
-# Configure reCAPTCHA
-app.config['RECAPTCHA_ENABLED'] = True
-app.config['RECAPTCHA_PUBLIC_KEY'] = os.environ.get("RECAPTCHA_PUBLIC_KEY")
-app.config['RECAPTCHA_PRIVATE_KEY'] = os.environ.get("RECAPTCHA_PRIVATE_KEY")
-app.config['RECAPTCHA_THEME'] = 'dark'
-app.config['RECAPTCHA_TYPE'] = 'image'
-app.config['RECAPTCHA_SIZE'] = 'compact'
-app.config['RECAPTCHA_LANGUAGE'] = 'en'
-app.config['RECAPTCHA_TABINDEX'] = 10
-
-# Initialize ReCaptcha
-recaptcha = ReCaptcha(app=app)
 
 # Flask app config
 
-app.config['SECRET_KEY'] = os.environ.get('SECRET_KEY')
+app.config['SECRET_KEY'] = os.environ.get('SECRET_KEY', '0982730987213iujasdoiased9082u32')
+
 if not app.config['SECRET_KEY'] and not app.debug:
     raise ValueError("No SECRET_KEY set for Flask application in production")
+app.config['WTF_CSRF_TIME_LIMIT'] = 3600  # ie 1 hour
+app.config['SESSION_COOKIE_SECURE'] = True  # Secure cookies (https)
+app.config['PREFERRED_URL_SCHEME'] = 'https'  # Ensure the correct scheme for production
+
+app.config['SESSION_TYPE'] = 'filesystem'  # For file-based sessions
 app.config['MAIL_SERVER'] = 'send.one.com'
 app.config['MAIL_PORT'] = 465
 app.config['MAIL_USERNAME'] = 'moi@espoo-israel.fi'
 app.config['MAIL_PASSWORD'] = os.getenv('EMAIL_PASSWORD')
 app.config['MAIL_USE_TLS'] = False
 app.config['MAIL_USE_SSL'] = True
+app.config['DEBUG'] = False
 
-# session cookie security settings
+# session cookie security setting and error handling
 if not app.debug:
     app.config['SESSION_COOKIE_SECURE'] = True
     app.config['SESSION_COOKIE_HTTPONLY'] = True
+    file_handler = FileHandler('error.log')
+    file_handler.setLevel(logging.INFO)
+    app.logger.addHandler(file_handler)
 
 mail = Mail(app)
 
@@ -98,10 +95,20 @@ def home():
 
     return render_template('index.html', form=form)
 
+@app.errorhandler(404)
+def page_not_found(e):
+    app.logger.error(f"404 Error: {e}")
+    return render_template('404.html'), 404
+
+@app.errorhandler(500)
+def internal_error(e):
+    app.logger.error(f"500 Error: {e}")
+    return render_template('500.html'), 500
+
 
 
 @app.route('/thank_you')  # Match the route name with the redirect
 def thank_you():
     return render_template('kiitos.html')
 if __name__ == "__main__":
-    app.run(host="0.0.0.0", port=8080)
+    app.run(debug=True)

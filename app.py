@@ -39,6 +39,8 @@ app.config['MAIL_PASSWORD'] = os.getenv('EMAIL_PASSWORD')
 app.config['MAIL_USE_TLS'] = False
 app.config['MAIL_USE_SSL'] = True
 app.config['DEBUG'] = False
+app.config['WTF_CSRF_ENABLED'] = False
+
 
 # session cookie security setting and error handling
 if not app.debug:

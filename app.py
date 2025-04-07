@@ -110,5 +110,7 @@ def internal_error(e):
 @app.route('/thank_you')  # Match the route name with the redirect
 def thank_you():
     return render_template('kiitos.html')
-if __name__ == "__main__":
-    app.run(debug=True)
+
+#This part is not used in production, since gunicorn takes care of it.
+#if __name__ == "__main__": 
+    #app.run(debug=True)

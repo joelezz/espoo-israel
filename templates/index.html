@@ -337,7 +337,7 @@
 
 <<<<<<< HEAD
         <form method="post" action="/" class="contact-form">
-            {{ form.csrf_token }}
+            {{ form.hidden_tag() }}
 
             <div class="form-group">
                 {{ form.name.label }}<br>

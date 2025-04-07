@@ -103,5 +103,5 @@ def home():
 @app.route('/thank_you')  # Match the route name with the redirect
 def thank_you():
     return render_template('kiitos.html')
-if __name__ == '__main__':
-    app.run(debug=True)
+if __name__ == "__main__":
+    app.run(host="0.0.0.0", port=8080)

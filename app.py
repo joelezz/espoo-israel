@@ -1,7 +1,5 @@
 import os
-import requests  
 from flask import Flask, request, redirect, url_for, render_template, flash
-from markupsafe import Markup
 from flask_mail import Mail, Message
 from flask_wtf.csrf import CSRFProtect
 from contact_form import ContactForm
@@ -37,19 +35,21 @@ app.config['RECAPTCHA_TABINDEX'] = 10
 recaptcha = ReCaptcha(app=app)
 
 # Flask app config
-app.config['SECRET_KEY'] = os.getenv('SECRET_KEY', 'secret-key')
-<<<<<<< HEAD
+
+app.config['SECRET_KEY'] = os.environ.get('SECRET_KEY')
+if not app.config['SECRET_KEY'] and not app.debug:
+    raise ValueError("No SECRET_KEY set for Flask application in production")
 app.config['MAIL_SERVER'] = 'send.one.com'
 app.config['MAIL_PORT'] = 465
 app.config['MAIL_USERNAME'] = 'moi@espoo-israel.fi'
-=======
-app.config['MAIL_SERVER'] = 'daxpower.com'
-app.config['MAIL_PORT'] = 465
-app.config['MAIL_USERNAME'] = 'lomakkeet@daxpower.com'
->>>>>>> efedbc1 (Preparing deployment to heroku)
 app.config['MAIL_PASSWORD'] = os.getenv('EMAIL_PASSWORD')
 app.config['MAIL_USE_TLS'] = False
 app.config['MAIL_USE_SSL'] = True
+
+# session cookie security settings
+if not app.debug:
+    app.config['SESSION_COOKIE_SECURE'] = True
+    app.config['SESSION_COOKIE_HTTPONLY'] = True
 
 mail = Mail(app)
 
@@ -64,7 +64,6 @@ def home():
     if form.validate_on_submit():
         name = form.name.data
         email = form.email.data
-<<<<<<< HEAD
         phone = form.phone.data
         address = form.address.data
         postal_code = form.postal_code.data
@@ -73,10 +72,6 @@ def home():
         message = form.message.data
         accept_policy = form.accept_policy.data
 
-=======
-        join = form.join.data
-        message = form.message.data
->>>>>>> efedbc1 (Preparing deployment to heroku)
 
         # Capture the reCAPTCHA response
         #recaptcha_response = request.form.get('g-recaptcha-response')
@@ -90,28 +85,15 @@ def home():
         # Process the form (e.g., send email)
         try:
             msg = Message(f"New Contact Form Submission from {name}",
-<<<<<<< HEAD
                           sender='moi@espoo-israel.fi',
-                          #recipients=["info@espoo-israel.fi", "espoo.israel@gmail.com",
-                          recipients=["zzjoe@tuta.io", "joel.ezzahid@gmail.com"])
-            msg.body = f"Nimi: {name}\nSähköposti: {email}\nHaluan liittyä jäseneksi: {join}\nOsoite: {address}\nPostinumero: {postal_code}\nPuhelin: {phone}\nHyväksyn ehdot: {accept_policy}\nViestisi: {message}"
-            mail.send(msg)
-            flash("Viestisi toimitettiin onnistuneesti!")
-            return redirect(url_for('thank_you'))
-        except Exception as e:
-            app.logger.error(f"Email sending failed: {str(e)}")
-            flash("Viestin lähetys epäonnistui. Yritä myöhemmin uudestaan.")
-=======
-                          sender='lomakkeet@daxpower.com',
-                          recipients=["joel.ezzahid@gmail.com", "zzjoe@tuta.io"])
-            msg.body = f"Name: {name}\nEmail: {email}\nJoin: {join}\nMessage: {message}"
+                          recipients=["info@espoo-israel.fi", "espoo.israel@gmail.com"])
+            msg.body = f"Nimi: {name}\nSähköposti: {email}\nHaluan liittyä jäseneksi: {join}\nOsite: {address}\nPostiosoite: {postal_code}\nPuhelin: {phone}\nHyväksyn ehdot: {accept_policy}\nViestisi: {message}"
             mail.send(msg)
             flash("Message sent successfully!")
             return redirect(url_for('thank_you'))
         except Exception as e:
             app.logger.error(f"Email sending failed: {str(e)}")
             flash("Failed to send message. Please try again later.")
->>>>>>> efedbc1 (Preparing deployment to heroku)
             return redirect(url_for('home'))
 
     return render_template('index.html', form=form)
@@ -120,15 +102,6 @@ def home():
 
 @app.route('/thank_you')  # Match the route name with the redirect
 def thank_you():
-    if recaptcha.verify():
-        # SUCCESS: Handle successful form submission
-<<<<<<< HEAD
-        return "Lomake toimitettu onnistuneesti, laitamme sinulle lisätiedot mahdollisimman pian!"
-=======
-        return "Form submitted successfully!"
->>>>>>> efedbc1 (Preparing deployment to heroku)
-    else:
-        # FAILED: Handle failed validation
-        return "reCAPTCHA validation failed. Please try again.", 400
+    return render_template('kiitos.html')
 if __name__ == '__main__':
     app.run(debug=True)

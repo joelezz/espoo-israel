@@ -15,7 +15,7 @@ FROM python:3-alpine AS runner
 WORKDIR /app
  
 COPY --from=builder /app/venv venv
-COPY app.py app.py
+COPY app/app.py app/app.py
  
 ENV VIRTUAL_ENV=/app/venv
 ENV PATH="$VIRTUAL_ENV/bin:$PATH"

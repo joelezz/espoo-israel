@@ -14,6 +14,9 @@
     <link rel="preload" href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700&display=swap" as="style">
     <link rel="icon" href="{{ url_for('static', filename='favicon.ico') }}" type="image/x-icon">
     <!-- <script src="https://www.google.com/recaptcha/api.js" async defer></script> -->
+     <script async
+  src="https://js.stripe.com/v3/buy-button.js">
+</script>
 </head>
 <style>
     .hero {
@@ -155,39 +158,22 @@
                         <iframe src="https://www.youtube.com/embed/d3Uf8Vyp3U8" title="Event Poster" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                     </div>
                     <div class="card-body">
-                        <h5 class="card-title text-primary">Elokuvailta - Kuoleman lista</h5>
-                        <p class="card-text"><i class="bi bi-geo-alt-fill"></i> Vanha Turuntie 14, Kauniainen, Työväen Akatemia</p>
-                        <p class="text-muted"><i class="bi bi-calendar-fill"></i> 5. Marraskuu, 2024 <br> klo 18</p>
-                        <p class="text-muted small">Tila: Iso A-paja</p>
+                        <h5 class="card-title text-primary">Elokuvanäytös - Kuoleman lista</h5>
+                        <p class="card-text"><i class="bi bi-geo-alt-fill"></i>Kino Kirkkonummi: Munkinmäentie 17, 02400 Kirkkonummi</p>
+                        <p class="text-muted"><i class="bi bi-calendar-fill"></i> 4. Marraskuu, 2025 <br> klo 18</p>
+                        <p class="text-muted small">Osta lippu:</p>
+                        
+                        <stripe-buy-button
+                            buy-button-id="buy_btn_1SGGE7E7uOoCCCtjlAIsXroc"
+                            publishable-key="pk_live_51SGFFRE7uOoCCCtjK0NXv2TTZ8SUEmT8eenKF0WR0ybFPqfvfbUHFAMpbKQMGH5npMflcawpJKo2w10TNOOSstgg00N1ajgssX"
+                        > 
+</stripe-buy-button>
                     </div>
                 </div>
             </div>
             <!-- Event 2 -->
-            <div class="col-md-4">
-                <div class="card h-100 shadow-sm border-0">
-                    <img src="{{ url_for('static', filename='images/holokaustin_muisto.webp') }}" class="card-img-top" alt="Event Image">
-                    <div class="card-body">
-                        <h5 class="card-title text-primary">Holokaustin uhrien muistopäivä</h5>
-                        <p class="card-text">Tapahtuma jossa muistamme holokaustin uhreja.</p>
-                        <p class="text-muted"><i class="bi bi-calendar-fill"></i> 27. Tammikuuta, 2024</p>
-                    </div>
-                </div>
-            </div>
+        
             <!-- Event 3 -->
-            <div class="col-md-4">
-                <div class="card h-100 shadow-sm border-0">
-                    <img src="{{ url_for('static', filename='images/israel.jpg') }}" class="card-img-top" alt="Event Image" style="height: 210px; width: stretch;">                    
-                    <div class="card-body">
-                        <h5 class="card-title text-primary">Israel vuonna 5785 -luentosarja</h5>
-                        <p class="card-text">Esitelmä- ja keskustelutilaisuuksien sarja syksystä 2024 kevääseen 2025 torstaisin.
-                            Aiheesta ”Elokuvani Ei koskaan yksin syntyprosessi” luennoi
-                            Elokuvaohjaaja, TaM Klaus Härö</p>
-                        <p class="card-text"><i class="bi bi-geo-alt-fill"></i> Helsingin yliopisto, Porthania P723, 7. krs, Yliopistonkatu 3, Helsinki</p>
-                        <p class="text-muted"><i class="bi bi-calendar-fill"></i> 10 January, 2025</p>
-                        <p class="text-muted small">Järjestäjänä Helsingin Suomi-Israel Yhdistys ry.
-                        </p>
-                    </div>
-                </div>
             </div>
         </div>
     </div>

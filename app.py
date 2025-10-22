@@ -113,6 +113,14 @@ def internal_error(e):
 def thank_you():
     return render_template('kiitos.html')
 
-#This part is not used in production, since gunicorn takes care of it.
-#if __name__ == "__main__": 
-    #app.run(debug=True)
+@app.route('/debug_video')
+def debug_video():
+    return render_template('debug_video.html')
+
+@app.route('/video_test')
+def video_test():
+    return render_template('video_test.html')
+
+# Enable debug mode for testing
+if __name__ == "__main__": 
+    app.run(debug=True, host='0.0.0.0', port=5000)

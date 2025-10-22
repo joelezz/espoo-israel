@@ -11,36 +11,74 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700&display=swap" as="style">
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap" as="style">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap" rel="stylesheet">
     <link rel="icon" href="{{ url_for('static', filename='favicon.ico') }}" type="image/x-icon">
     <!-- <script src="https://www.google.com/recaptcha/api.js" async defer></script> -->
      <script async
   src="https://js.stripe.com/v3/buy-button.js">
 </script>
 </head>
-<style>
-    .hero {
-        background-image: url("{{ url_for('static', filename='images/hero.jpg') }}");
-        background-size: cover;
-        background-position: center;
-        height: 100vh;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        color: white;
-        text-align: center;
-    }
-</style>
+
 <body>
     <div id="fb-root"></div>
     <script async defer crossorigin="anonymous" src="https://connect.facebook.net/fi_FI/sdk.js#xfbml=1&version=v21.0"></script>
+    
+    <!-- Movie Ticket Popup Modal -->
+    <div id="moviePopup" class="movie-popup-overlay">
+        <div class="movie-popup-content">
+            <button class="popup-close" onclick="closeMoviePopup()">&times;</button>
+            
+            <div class="popup-header">
+                <h2 data-fi="🎬 Erikoisnäytös!" data-en="🎬 Special Screening!">🎬 Erikoisnäytös!</h2>
+                <div class="popup-badge" data-fi="Rajoitettu määrä paikkoja" data-en="Limited seats available">Rajoitettu määrä paikkoja</div>
+            </div>
+            
+            <div class="popup-body">
+                <div class="movie-poster">
+                    <iframe src="https://www.youtube.com/embed/d3Uf8Vyp3U8" 
+                            title="Kuoleman lista - Traileri" 
+                            frameborder="0" 
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                            allowfullscreen
+                            style="width: 100%; height: 200px; border-radius: 12px;">
+                    </iframe>
+                </div>
+                
+                <div class="movie-details">
+                    <h3 data-fi="Elokuvanäytös - Kuoleman lista" data-en="Movie Screening - Death List">Elokuvanäytös - Kuoleman lista</h3>
+                    <div class="movie-info">
+                        <p><i class="bi bi-calendar-fill"></i> <strong data-fi="4. Marraskuu 2025, klo 18:00" data-en="November 4, 2025, at 6:00 PM">4. Marraskuu 2025, klo 18:00</strong></p>
+                        <p><i class="bi bi-geo-alt-fill"></i> <span data-fi="Kino Kirkkonummi" data-en="Kino Kirkkonummi">Kino Kirkkonummi</span></p>
+                        <p class="address">Munkinmäentie 17, 02400 Kirkkonummi</p>
+                    </div>
+                    
+                    <div class="popup-highlight">
+                        <p data-fi="Liity mukaan tähän erityiseen elokuvailtaan! Rajoitettu määrä paikkoja saatavilla." data-en="Join us for this special movie evening! Limited seats available.">Liity mukaan tähän erityiseen elokuvailtaan! Rajoitettu määrä paikkoja saatavilla.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="popup-footer">
+                <stripe-buy-button
+                    buy-button-id="buy_btn_1SGGE7E7uOoCCCtjlAIsXroc"
+                    publishable-key="pk_live_51SGFFRE7uOoCCCtjK0NXv2TTZ8SUEmT8eenKF0WR0ybFPqfvfbUHFAMpbKQMGH5npMflcawpJKo2w10TNOOSstgg00N1ajgssX">
+                </stripe-buy-button>
+                
+                <button class="btn-secondary" onclick="closeMoviePopup()" data-fi="Ehkä myöhemmin" data-en="Maybe later">Ehkä myöhemmin</button>
+            </div>
+        </div>
+    </div>
           
+    <!-- Scroll Indicator -->
+    <div class="scroll-indicator"></div>
+    
     <!-- Navbar -->
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <nav class="navbar navbar-expand-lg">
         <div class="container-fluid">
             <div class="logo">
                 <a href="#hero">
-                    <img src="{{ url_for('static', filename='images/logo.webp') }}" alt="logo" height="75">
+                    <img src="{{ url_for('static', filename='images/logo.webp') }}" alt="logo" height="60" style="filter: brightness(1.2);">
                 </a>
             </div>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#nav-links" aria-controls="nav-links" aria-expanded="false" aria-label="Toggle navigation">
@@ -48,12 +86,20 @@
             </button>
             <div class="collapse navbar-collapse justify-content-end" id="nav-links">
                 <ul class="navbar-nav">
-                    <li class="nav-item"><a class="nav-link" href="#hero">Koti</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#about">Meistä</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#media">Mediat</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#events">Tapahtumat</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#links">Linkkejä</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#contact">Liity</a></li>
+                    <li class="nav-item"><a class="nav-link nav-link-premium" href="#hero" data-fi="Koti" data-en="Home">Koti</a></li>
+                    <li class="nav-item"><a class="nav-link nav-link-premium" href="#about" data-fi="Meistä" data-en="About">Meistä</a></li>
+                    <li class="nav-item"><a class="nav-link nav-link-premium" href="#media" data-fi="Mediat" data-en="Media">Mediat</a></li>
+                    <li class="nav-item"><a class="nav-link nav-link-premium" href="#events" data-fi="Tapahtumat" data-en="Events">Tapahtumat</a></li>
+                    <li class="nav-item"><a class="nav-link nav-link-premium" href="#links" data-fi="Linkkejä" data-en="Links">Linkkejä</a></li>
+                    <li class="nav-item"><a class="nav-link nav-link-premium" href="javascript:void(0)" onclick="showMoviePopupManual()" data-fi="🎬 Osta lippu" data-en="🎬 Buy Ticket">🎬 Osta lippu</a></li>
+                    <li class="nav-item"><a class="nav-link nav-link-premium" href="#contact" data-fi="Liity" data-en="Join">Liity</a></li>
+                    <li class="nav-item">
+                        <div class="language-toggle">
+                            <button id="langToggle" class="lang-btn">
+                                <span class="flag-icon">🇫🇮</span>
+                            </button>
+                        </div>
+                    </li>
                 </ul>
             </div>
         </div>
@@ -61,38 +107,63 @@
     
 
     <!-- Hero section -->
-    <section id="hero" class="hero d-flex flex-column align-items-center text-center bg-dark text-light" style="position:relative;">
-            <div class="hero-content">
-                <h1 class="display-4">Tervetuloa Espoon Suomi-Israel Yhdistyksen sivustolle</h1>
-                <p class="lead">Espoon Suomi-Israel yhdistyksen missiona on vahvistaa Espoon ja Israelin välistä yhteistyötä bisneksen, teknologian ja innovaation alueilla.</p> 
-                    <p class="lead">Liity jäseneksi nyt!</p>
-                <a href="#contact" class="btn btn-primary btn-lg">Liity</a>
-            </div>
+    <section id="hero" class="hero d-flex flex-column align-items-center text-center" style="position:relative; min-height: 100vh; overflow: hidden;">
+        <!-- Video Background -->
+        <div class="hero-video-container">
+            <video class="hero-video" 
+                   autoplay 
+                   muted 
+                   loop 
+                   playsinline 
+                   preload="auto">
+                <source src="/static/videos/hero-video.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+            <!-- Fallback background image -->
+            <div class="hero-fallback-bg"></div>
+            <!-- Video overlay for better text readability -->
+            <div class="hero-video-overlay"></div>
+        </div>
+        
+        <!-- Animated Background Orbs -->
+        <div class="bg-orb"></div>
+        <div class="bg-orb"></div>
+        <div class="bg-orb"></div>
+        
+        <div class="hero-content">
+            <h1 class="display-4" data-fi="Tervetuloa Espoon Suomi-Israel Yhdistyksen sivustolle" data-en="Welcome to Espoo Finland-Israel Association">Tervetuloa Espoon Suomi-Israel Yhdistyksen sivustolle</h1>
+            <p class="lead" style="font-size: 1.25rem; margin: 24px 0;" data-fi="Espoon Suomi-Israel yhdistyksen missiona on vahvistaa Espoon ja Israelin välistä yhteistyötä bisneksen, teknologian ja innovaation alueilla." data-en="The mission of Espoo Finland-Israel Association is to strengthen cooperation between Espoo and Israel in business, technology and innovation.">Espoon Suomi-Israel yhdistyksen missiona on vahvistaa Espoon ja Israelin välistä yhteistyötä bisneksen, teknologian ja innovaation alueilla.</p> 
+            <p class="lead" style="font-size: 1.1rem; margin-bottom: 32px;" data-fi="Liity jäseneksi nyt!" data-en="Join as a member now!">Liity jäseneksi nyt!</p>
+            <a href="#contact" class="btn-premium" data-fi="Liity jäseneksi" data-en="Join as Member">Liity jäseneksi</a>
+        </div>
     </section>
 
 <!-- About section -->
-<section id="about" class="py-5">
+<section id="about" class="py-5 section">
+    <div class="bg-orb"></div>
     <div class="container">
-        <h1 class="text-center mb-4">Meistä</h1>
+        <h3 class="text-center mb-5" data-fi="Meistä" data-en="About Us">Meistä</h3>
         <div class="row">
             <div class="col-md-10 mx-auto">
-                <p class="lead">Espoon Suomi-Israel Yhdistys ry perustettiin Espoon valtuustotalolla 28.11.2016 ollen vuonna 1954 perustetun Suomi-Israel Yhdistysten Liiton 12:s paikallisyhdistys.</p>
+                <div class="card-premium">
+                    <p data-fi="Espoon Suomi-Israel Yhdistys ry perustettiin Espoon valtuustotalolla 28.11.2016 ollen vuonna 1954 perustetun Suomi-Israel Yhdistysten Liiton 12:s paikallisyhdistys." data-en="Espoo Finland-Israel Association was founded at Espoo City Hall on November 28, 2016, being the 12th local association of the Finland-Israel Association Union founded in 1954.">Espoon Suomi-Israel Yhdistys ry perustettiin Espoon valtuustotalolla 28.11.2016 ollen vuonna 1954 perustetun Suomi-Israel Yhdistysten Liiton 12:s paikallisyhdistys.</p>
 
-                <p class="lead">Perustamiskokousta kunnioitti läsnäolollaan Israelin Suomen-suurlähettiläs Dov Segev-Steinberg, ja tilaisuudessa käyttivät puheenvuoron myös espoolaiset kansanedustajat ja kaupunginvaltuutetut Antero Laukkanen ja Simon Elo, Suomi-Israel Yhdistysten Liiton puheenjohtaja Juha-Pekka Rissanen, Keren Kajemet Finland ry:n varapj. Iakov Dondych sekä Espoon yhdistyksen puuhamies, Suomi-Israel Yhdistysten Liiton varapj. Risto Huvila.</p>
-                       
-                <p class="lead">Yhdistyksen tarkoituksena on toimia Suomen ja Israelin välisenä ystävyysjärjestönä sekä kehittää maiden välisiä suhteita ja yhteistoimintaa tieteen, teknologian, liike-elämän, kulttuurin sekä muun kansalaistoiminnan alueilla.</p>
-                    
-                <p class="lead">Perustamiskirjan allekirjoitti kaikkiaan 28 perustajaa ja yhdistys merkittiin yhdistysrekisteriin 11.1.2017.</p>
+                    <p data-fi="Perustamiskokousta kunnioitti läsnäolollaan Israelin Suomen-suurlähettiläs Dov Segev-Steinberg, ja tilaisuudessa käyttivät puheenvuoron myös espoolaiset kansanedustajat ja kaupunginvaltuutetut Antero Laukkanen ja Simon Elo, Suomi-Israel Yhdistysten Liiton puheenjohtaja Juha-Pekka Rissanen, Keren Kajemet Finland ry:n varapj. Iakov Dondych sekä Espoon yhdistyksen puuhamies, Suomi-Israel Yhdistysten Liiton varapj. Risto Huvila." data-en="The founding meeting was honored by the presence of Israel's Ambassador to Finland Dov Segev-Steinberg, and speakers included Espoo members of parliament and city councilors Antero Laukkanen and Simon Elo, Finland-Israel Association Union chairman Juha-Pekka Rissanen, Keren Kajemet Finland vice-chairman Iakov Dondych, and Espoo association organizer, Finland-Israel Association Union vice-chairman Risto Huvila.">Perustamiskokousta kunnioitti läsnäolollaan Israelin Suomen-suurlähettiläs Dov Segev-Steinberg, ja tilaisuudessa käyttivät puheenvuoron myös espoolaiset kansanedustajat ja kaupunginvaltuutetut Antero Laukkanen ja Simon Elo, Suomi-Israel Yhdistysten Liiton puheenjohtaja Juha-Pekka Rissanen, Keren Kajemet Finland ry:n varapj. Iakov Dondych sekä Espoon yhdistyksen puuhamies, Suomi-Israel Yhdistysten Liiton varapj. Risto Huvila.</p>
+                           
+                    <p data-fi="Yhdistyksen tarkoituksena on toimia Suomen ja Israelin välisenä ystävyysjärjestönä sekä kehittää maiden välisiä suhteita ja yhteistoimintaa tieteen, teknologian, liike-elämän, kulttuurin sekä muun kansalaistoiminnan alueilla." data-en="The purpose of the association is to act as a friendship organization between Finland and Israel and to develop relations and cooperation between the countries in the fields of science, technology, business, culture and other civic activities.">Yhdistyksen tarkoituksena on toimia Suomen ja Israelin välisenä ystävyysjärjestönä sekä kehittää maiden välisiä suhteita ja yhteistoimintaa tieteen, teknologian, liike-elämän, kulttuurin sekä muun kansalaistoiminnan alueilla.</p>
+                        
+                    <p data-fi="Perustamiskirjan allekirjoitti kaikkiaan 28 perustajaa ja yhdistys merkittiin yhdistysrekisteriin 11.1.2017." data-en="The founding document was signed by a total of 28 founders and the association was registered in the association register on January 11, 2017.">Perustamiskirjan allekirjoitti kaikkiaan 28 perustajaa ja yhdistys merkittiin yhdistysrekisteriin 11.1.2017.</p>
+                </div>
             </div>
         </div>
     </div>
 </section>
 
 <section id="carousel" class="section">
-
-<!-- Carousel container -->
-<div class="container d-flex justify-content-center">
-    <div id="aboutCarousel" class="carousel slide mb-4" data-bs-ride="carousel" data-bs-interval="3000" style="width: 100%; height: 100vh;">
+    <div class="bg-orb"></div>
+    <!-- Carousel container -->
+    <div class="container d-flex justify-content-center">
+        <div id="aboutCarousel" class="carousel slide mb-4 card-premium" data-bs-ride="carousel" data-bs-interval="3000" style="width: 100%; height: 80vh; border-radius: 20px; overflow: hidden; padding: 0;">
         <div class="carousel-indicators">
             <button type="button" data-bs-target="#aboutCarousel" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
             <button type="button" data-bs-target="#aboutCarousel" data-bs-slide-to="1" aria-label="Slide 2"></button>
@@ -107,12 +178,6 @@
             </div>
             <div class="carousel-item">
                 <img src="{{ url_for('static', filename='images/pic2.jpg') }}" class="d-block mx-auto img-fluid" alt="Second image">
-            </div>
-            <div class="carousel-item">
-                <img src="{{ url_for('static', filename='images/pic3.jpg') }}" class="d-block mx-auto img-fluid" alt="Third image">
-            </div>
-            <div class="carousel-item">
-                <img src="{{ url_for('static', filename='images/onnittele.jpg') }}" class="d-block mx-auto img-fluid" alt="Fourth image  ">
             </div>
             <div class="carousel-item">
                 <img src="{{ url_for('static', filename='images/pic4.jpg') }}" class="d-block mx-auto img-fluid" alt="Fifth image  ">
@@ -134,86 +199,83 @@
 </section>
 
 <section id="media" class="section">
-
-<!-- Youtube container -->
-
+    <div class="bg-orb"></div>
+    <!-- Youtube container -->
     <div class="container mt-4">
-        <img src="{{ url_for('static', filename='images/israel-studio.jpg') }}" class="d-block mx-auto img-fluid" alt="Israel studio kuva" style="padding: 20px;">
-        <div class="ratio ratio-16x9">
-            <iframe src="https://www.youtube.com/embed?listType=playlist&list=PLuIS6QfhZIsmUYoryGn8DIArdhVzHvJvA" frameborder="0" allowfullscreen></iframe>
+        <div class="card-premium" style="margin-bottom: 32px;">
+            <img src="{{ url_for('static', filename='images/israel-studio.jpg') }}" class="d-block mx-auto img-fluid" alt="Israel studio kuva" style="border-radius: 16px; max-height: 400px; object-fit: cover;">
+        </div>
+        <div class="card-premium">
+            <div class="ratio ratio-16x9">
+                <iframe src="https://www.youtube.com/embed?listType=playlist&list=PLuIS6QfhZIsmUYoryGn8DIArdhVzHvJvA" frameborder="0" allowfullscreen style="border-radius: 16px;"></iframe>
+            </div>
         </div>
     </div>
 </section>
 
 
 <!-- Events Section -->
-<section id="events" class="py-5 bg-light">
+<section id="events" class="py-5 section">
+    <div class="bg-orb"></div>
     <div class="container">
-        <h1 class="text-center mb-5">Tulevia tapahtumia</h1>
-        <div class="row g-4">
+        <h3 class="text-center mb-5" data-fi="Tulevia tapahtumia" data-en="Upcoming Events">Tulevia tapahtumia</h3>
+        <div class="premium-grid">
             <!-- Event 1 -->
-            <div class="col-md-4">
-                <div class="card h-100 shadow-sm border-0">
-                    <div class="ratio ratio-16x9">
-                        <iframe src="https://www.youtube.com/embed/d3Uf8Vyp3U8" title="Event Poster" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                    </div>
-                    <div class="card-body">
-                        <h5 class="card-title text-primary">Elokuvanäytös - Kuoleman lista</h5>
-                        <p class="card-text"><i class="bi bi-geo-alt-fill"></i>Kino Kirkkonummi: Munkinmäentie 17, 02400 Kirkkonummi</p>
-                        <p class="text-muted"><i class="bi bi-calendar-fill"></i> 4. Marraskuu, 2025 <br> klo 18</p>
-                        <p class="text-muted small">Osta lippu:</p>
-                        
-                        <stripe-buy-button
-                            buy-button-id="buy_btn_1SGGE7E7uOoCCCtjlAIsXroc"
-                            publishable-key="pk_live_51SGFFRE7uOoCCCtjK0NXv2TTZ8SUEmT8eenKF0WR0ybFPqfvfbUHFAMpbKQMGH5npMflcawpJKo2w10TNOOSstgg00N1ajgssX"
-                        > 
-</stripe-buy-button>
-                    </div>
+            <div class="card-premium">
+                <div class="ratio ratio-16x9" style="margin-bottom: 24px;">
+                    <iframe src="https://www.youtube.com/embed/d3Uf8Vyp3U8" title="Event Poster" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen style="border-radius: 12px;"></iframe>
                 </div>
-            </div>
-            <!-- Event 2 -->
-        
-            <!-- Event 3 -->
+                <h5 style="color: #a8edea; font-weight: 600; margin-bottom: 16px;" data-fi="Elokuvanäytös - Kuoleman lista" data-en="Movie Screening - Death List">Elokuvanäytös - Kuoleman lista</h5>
+                <p style="margin-bottom: 12px;"><i class="bi bi-geo-alt-fill" style="color: #fed6e3; margin-right: 8px;"></i><span data-fi="Kino Kirkkonummi: Munkinmäentie 17, 02400 Kirkkonummi" data-en="Kino Kirkkonummi: Munkinmäentie 17, 02400 Kirkkonummi">Kino Kirkkonummi: Munkinmäentie 17, 02400 Kirkkonummi</span></p>
+                <p style="margin-bottom: 20px;"><i class="bi bi-calendar-fill" style="color: #fed6e3; margin-right: 8px;"></i> <span data-fi="4. Marraskuu, 2025 klo 18" data-en="November 4, 2025 at 6 PM">4. Marraskuu, 2025 klo 18</span></p>
+                <p style="font-size: 0.9rem; margin-bottom: 16px; opacity: 0.8;" data-fi="Osta lippu:" data-en="Buy ticket:">Osta lippu:</p>
+                
+                <stripe-buy-button
+                    buy-button-id="buy_btn_1SGGE7E7uOoCCCtjlAIsXroc"
+                    publishable-key="pk_live_51SGFFRE7uOoCCCtjK0NXv2TTZ8SUEmT8eenKF0WR0ybFPqfvfbUHFAMpbKQMGH5npMflcawpJKo2w10TNOOSstgg00N1ajgssX"
+                > 
+</stripe-buy-button>
             </div>
         </div>
     </div>
 </section>
 
     <!-- Useful Links Section -->
-    <section id="links" class="py-5 bg-light">
-    <div class="container">
-
-    <div class="useful-links text-center">
-        <h3 class="mb-4">Hyödyllisiä linkkejä</h3>
-        <ul class="list-unstyled row row-cols-1 row-cols-md-2 row-cols-lg-3 g-3">
-            <li><a href="https://espooinnovationgarden.fi/" target="_blank">Espoo Innovation Garden</a></li>
-            <li><a href="https://www.espoo.fi/fi" target="_blank">Espoon kaupunki</a></li>
-            <li><a href="https://www.eyewear.co.il/goisrael" target="_blank">Go Israel -portaali</a></li>
-            <li><a href="https://iati.co.il/" target="_blank">Israel Advanced Technology Industry</a></li>
-            <li><a href="https://www.gov.il/en/departments/prime_ministers_office/govil-landing-page" target="_blank">Israelin pääministerin toimisto</a></li>
-            <li><a href="https://new.embassies.gov.il/finland/en" target="_blank">Israelin suurlähetystö Suomessa</a></li>
-            <li><a href="https://www.science.co.il/technology/" target="_blank">Israel Science and Technology</a></li>
-            <li><a href="https://www.jerusalem.com/" target="_blank">Jerusalem.com</a></li>
-            <li><a href="https://govextra.gov.il/moia/jerusalem-lang/home-en/" target="_blank">Jerusalemin kaupunki</a></li>
-            <li><a href="https://www.jpost.com/" target="_blank">Jerusalem Post</a></li>
-            <li><a href="https://www.knesset.gov.il/maintenance-page-geo" target="_blank">Knesset</a></li>
-            <li><a href="https://startupnationcentral.org/" target="_blank">Start-up Nation</a></li>
-            <li><a href="https://www.knesset.gov.il/maintenance-page-geo" target="_blank">Suomen suurlähetystö Israelissa</a></li>
-            <li><a href="https://www.fita.fi/" target="_blank">Suomi-Israel Kauppayhdistys ry</a></li>
-            <li><a href="http://www.suomi-israel.fi/" target="_blank">Suomi-Israel Yhdistysten Liitto ry</a></li>
-            <li><a href="https://www.tel-aviv.gov.il/en/Pages/HomePage.aspx" target="_blank">Tel Avivin kaupunki</a></li>
-            <li><a href="http://www.truman.fi/" target="_blank">Truman.fi</a></li>
-            <li><a href="http://www.visitespoo.fi/" target="_blank">Visit Espoo</a></li>
-            <li><a href="http://wikitravel.org/en/Israel" target="_blank">Wikitravel Israel</a></li>
-        </ul>
-    </div>
-    </div>
+    <section id="links" class="py-5 section">
+        <div class="bg-orb"></div>
+        <div class="container">
+            <div class="useful-links text-center">
+                <h3 class="mb-5" data-fi="Hyödyllisiä linkkejä" data-en="Useful Links">Hyödyllisiä linkkejä</h3>
+                <div class="premium-grid">
+                    <a href="https://espooinnovationgarden.fi/" target="_blank" class="link-item">Espoo Innovation Garden</a>
+                    <a href="https://www.espoo.fi/fi" target="_blank" class="link-item">Espoon kaupunki</a>
+                    <a href="https://www.eyewear.co.il/goisrael" target="_blank" class="link-item">Go Israel -portaali</a>
+                    <a href="https://iati.co.il/" target="_blank" class="link-item">Israel Advanced Technology Industry</a>
+                    <a href="https://www.gov.il/en/departments/prime_ministers_office/govil-landing-page" target="_blank" class="link-item">Israelin pääministerin toimisto</a>
+                    <a href="https://new.embassies.gov.il/finland/en" target="_blank" class="link-item">Israelin suurlähetystö Suomessa</a>
+                    <a href="https://www.science.co.il/technology/" target="_blank" class="link-item">Israel Science and Technology</a>
+                    <a href="https://www.jerusalem.com/" target="_blank" class="link-item">Jerusalem.com</a>
+                    <a href="https://govextra.gov.il/moia/jerusalem-lang/home-en/" target="_blank" class="link-item">Jerusalemin kaupunki</a>
+                    <a href="https://www.jpost.com/" target="_blank" class="link-item">Jerusalem Post</a>
+                    <a href="https://www.knesset.gov.il/maintenance-page-geo" target="_blank" class="link-item">Knesset</a>
+                    <a href="https://startupnationcentral.org/" target="_blank" class="link-item">Start-up Nation</a>
+                    <a href="https://www.knesset.gov.il/maintenance-page-geo" target="_blank" class="link-item">Suomen suurlähetystö Israelissa</a>
+                    <a href="https://www.fita.fi/" target="_blank" class="link-item">Suomi-Israel Kauppayhdistys ry</a>
+                    <a href="http://www.suomi-israel.fi/" target="_blank" class="link-item">Suomi-Israel Yhdistysten Liitto ry</a>
+                    <a href="https://www.tel-aviv.gov.il/en/Pages/HomePage.aspx" target="_blank" class="link-item">Tel Avivin kaupunki</a>
+                    <a href="http://www.truman.fi/" target="_blank" class="link-item">Truman.fi</a>
+                    <a href="http://www.visitespoo.fi/" target="_blank" class="link-item">Visit Espoo</a>
+                    <a href="http://wikitravel.org/en/Israel" target="_blank" class="link-item">Wikitravel Israel</a>
+                </div>
+            </div>
+        </div>
     </section>
 <!-- Contact form section -->
 <section id="contact" class="section">
+    <div class="bg-orb"></div>
     <div class="container">
         <div class="header-text">
-            <h1>Liity jäseneksi</h1>
+            <h3 data-fi="Liity jäseneksi" data-en="Join as Member">Liity jäseneksi</h3>
         </div>
         
         {% with messages = get_flashed_messages() %}
@@ -226,11 +288,11 @@
             {% endif %}
         {% endwith %}
 
-        <form method="post" action="/" class="contact-form">
+        <form method="post" action="/" class="card-premium" style="max-width: 600px; margin: 0 auto;">
             {{ form.hidden_tag() }}
 
             <div class="form-group">
-                {{ form.name.label }}<br>
+                <label data-fi="Nimi:" data-en="Name:">Nimi:</label><br>
                 {{ form.name(size=32) }}<br>
                 {% for error in form.name.errors %}
                     <span class="error">{{ error }}</span>
@@ -238,7 +300,7 @@
             </div>
 
             <div class="form-group">
-                {{ form.address.label }}<br>
+                <label data-fi="Postiosoite:" data-en="Address:">Postiosoite:</label><br>
                 {{ form.address(size=32) }}<br>
                 {% for error in form.address.errors %}
                     <span class="error">{{ error }}</span>
@@ -246,7 +308,7 @@
             </div>
 
             <div class="form-group">
-                {{ form.postal_code.label }}<br>
+                <label data-fi="Postinumero:" data-en="Postal Code:">Postinumero:</label><br>
                 {{ form.postal_code(size=32) }}<br>
                 {% for error in form.postal_code.errors %}
                     <span class="error">{{ error }}</span>
@@ -254,7 +316,7 @@
             </div>
 
             <div class="form-group">
-                {{ form.city.label }}<br>
+                <label data-fi="Postitoimipaikka:" data-en="City:">Postitoimipaikka:</label><br>
                 {{ form.city(size=32) }}<br>
                 {% for error in form.city.errors %}
                     <span class="error">{{ error }}</span>
@@ -262,7 +324,7 @@
             </div>
             
             <div class="form-group">
-                {{ form.email.label }}<br>
+                <label data-fi="Sähköposti:" data-en="Email:">Sähköposti:</label><br>
                 {{ form.email(size=32) }}<br>
                 {% for error in form.email.errors %}
                     <span class="error">{{ error }}</span>
@@ -270,7 +332,7 @@
             </div>
             
             <div class="form-group">
-                {{ form.phone.label }}<br>
+                <label data-fi="Puhelin:" data-en="Phone:">Puhelin:</label><br>
                 {{ form.phone(size=32) }}<br>
                 {% for error in form.phone.errors %}
                     <span class="error">{{ error }}</span>
@@ -278,12 +340,12 @@
             </div>
 
             <div class="form-group">
-                {{ form.join.label }}<br>
+                <label data-fi="Haluan liittyä Espoon Suomi-Israel yhdistyksen tukijäseneksi:" data-en="I want to join Espoo Finland-Israel Association as a supporting member:">Haluan liittyä Espoon Suomi-Israel yhdistyksen tukijäseneksi:</label><br>
                 {{ form.join() }}<br>
             </div>
             
             <div class="form-group">
-                {{ form.message.label }}<br>
+                <label data-fi="Viesti:" data-en="Message:">Viesti:</label><br>
                 {{ form.message(rows=4, cols=40) }}<br>
                 {% for error in form.message.errors %}
                     <span class="error">{{ error }}</span>
@@ -293,38 +355,40 @@
             <div class="form-group">
                 <label for="accept_policy">
                     {{ form.accept_policy() }}
-                    Hyväksyn 
-                    <a href="https://suomi-israel.fi/suomi-israel-yhdistysten-liitto-ryn-tietosuojaseloste/" target="_blank">tietosuojaselosteen</a>
+                    <span data-fi="Hyväksyn" data-en="I accept the">Hyväksyn</span>
+                    <a href="https://suomi-israel.fi/suomi-israel-yhdistysten-liitto-ryn-tietosuojaseloste/" target="_blank" data-fi="tietosuojaselosteen" data-en="privacy policy">tietosuojaselosteen</a>
                 </label>
             </div>
    
             
-            <p><button type="submit" class="submit-button">Liity</button></p>
+            <p><button type="submit" class="btn-premium" data-fi="Liity jäseneksi" data-en="Join as Member">Liity jäseneksi</button></p>
         </form>
     </div>
 </section>
 
         <!-- Footer -->
-        <footer class="text-center footer bg-light py-4">
+        <footer class="text-center py-5" style="background: rgba(8, 8, 18, 0.9); backdrop-filter: blur(40px); border-top: 1px solid rgba(255, 255, 255, 0.12);">
+            <div class="bg-orb"></div>
             <div class="container d-flex flex-column align-items-center">
-                <img src="{{ url_for('static', filename='images/logo.webp') }}" alt="logo" height="75px" width="auto" class="mb-3">
+                <img src="{{ url_for('static', filename='images/logo.webp') }}" alt="logo" height="60px" width="auto" class="mb-4" style="filter: brightness(1.2);">
                 
-                <p style="padding: 10px 0; margin: 0;"><strong>Espoon Suomi-Israel yhdistys ry</strong></p>         
+                <p style="padding: 10px 0; margin: 0; font-weight: 500; color: rgba(255, 255, 255, 0.95);"><strong>Espoon Suomi-Israel yhdistys ry</strong></p>         
                 
                 <!-- Social media icons -->
                 <div class="social-icons mt-3">
-                    <a href="https://www.facebook.com/espoo.israel/" target="_blank" class="facebook-icon">
+                    <a href="https://www.facebook.com/espoo.israel/" target="_blank" style="color: rgba(255, 255, 255, 0.8); transition: all 0.3s ease;">
                         <i class="fab fa-facebook fa-2x"></i>
                     </a>
                 </div>
                   
-                <p class="mt-3">&copy; 2025 <a href="https://espoo-israel.fi/" class="text-black">Espoo-Israel.fi</a></p>
+                <p class="mt-4" style="opacity: 0.9; color: rgba(255, 255, 255, 0.8);">&copy; 2025 <a href="https://espoo-israel.fi/" style="color: #a8edea; text-decoration: none;">Espoo-Israel.fi</a></p>
             </div>
         </footer>
         
     
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
 
 </body>
 </html>

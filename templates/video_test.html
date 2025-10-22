@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Video Test</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 20px;
+            background: #000;
+            color: white;
+            font-family: Arial, sans-serif;
+        }
+        .video-container {
+            width: 100%;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        video {
+            width: 100%;
+            height: auto;
+            border: 2px solid #fff;
+        }
+        .info {
+            margin: 20px 0;
+            padding: 10px;
+            background: #333;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Video Test Page</h1>
+    
+    <div class="info">
+        <h3>Video Information:</h3>
+        <p id="video-info">Loading...</p>
+    </div>
+    
+    <div class="video-container">
+        <video id="test-video" 
+               controls 
+               autoplay 
+               muted 
+               loop 
+               playsinline 
+               preload="metadata">
+            <source src="{{ url_for('static', filename='videos/hero-video.mp4') }}" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+    </div>
+    
+    <div class="info">
+        <button onclick="playVideo()">Play Video</button>
+        <button onclick="pauseVideo()">Pause Video</button>
+        <button onclick="checkVideoStatus()">Check Status</button>
+    </div>
+    
+    <div class="info">
+        <h3>Console Output:</h3>
+        <div id="console-output"></div>
+    </div>
+
+    <script>
+        const video = document.getElementById('test-video');
+        const infoDiv = document.getElementById('video-info');
+        const consoleDiv = document.getElementById('console-output');
+        
+        function log(message) {
+            console.log(message);
+            consoleDiv.innerHTML += '<p>' + message + '</p>';
+        }
+        
+        function updateInfo() {
+            infoDiv.innerHTML = `
+                <strong>Source:</strong> ${video.src || 'No source'}<br>
+                <strong>Ready State:</strong> ${video.readyState}<br>
+                <strong>Paused:</strong> ${video.paused}<br>
+                <strong>Muted:</strong> ${video.muted}<br>
+                <strong>Duration:</strong> ${video.duration || 'Unknown'}<br>
+                <strong>Current Time:</strong> ${video.currentTime}<br>
+                <strong>Video Width:</strong> ${video.videoWidth}<br>
+                <strong>Video Height:</strong> ${video.videoHeight}
+            `;
+        }
+        
+        function playVideo() {
+            video.play().then(() => {
+                log('Video started playing');
+            }).catch(error => {
+                log('Play failed: ' + error.message);
+            });
+        }
+        
+        function pauseVideo() {
+            video.pause();
+            log('Video paused');
+        }
+        
+        function checkVideoStatus() {
+            updateInfo();
+            log('Video status updated');
+        }
+        
+        // Event listeners
+        video.addEventListener('loadstart', () => log('Load start'));
+        video.addEventListener('loadedmetadata', () => log('Metadata loaded'));
+        video.addEventListener('loadeddata', () => log('Data loaded'));
+        video.addEventListener('canplay', () => log('Can play'));
+        video.addEventListener('canplaythrough', () => log('Can play through'));
+        video.addEventListener('play', () => log('Play event'));
+        video.addEventListener('pause', () => log('Pause event'));
+        video.addEventListener('error', (e) => log('Error: ' + e.message));
+        
+        // Update info every second
+        setInterval(updateInfo, 1000);
+        
+        // Initial update
+        updateInfo();
+        log('Video test page loaded');
+    </script>
+</body>
+</html>

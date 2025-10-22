@@ -269,12 +269,86 @@ p {
         0 0 20px rgba(255, 255, 255, 0.1) inset;
 }
 
-/* Toggle button style */
+/* Hamburger Menu Styles - Mobile First */
+.navbar-toggler {
+    border: 2px solid rgba(255, 255, 255, 0.8) !important;
+    border-radius: 8px !important;
+    padding: 8px 12px !important;
+    background: rgba(0, 0, 0, 0.3) !important;
+    backdrop-filter: blur(10px) !important;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2) !important;
+}
+
+.navbar-toggler:hover {
+    border-color: #007bff !important;
+    background: rgba(0, 123, 255, 0.2) !important;
+    transform: translateY(-2px) scale(1.05) !important;
+    box-shadow: 0 8px 25px rgba(0, 123, 255, 0.3) !important;
+}
+
+.navbar-toggler:focus {
+    border-color: #007bff !important;
+    box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.3) !important;
+}
+
+/* Custom hamburger icon */
+.navbar-toggler-icon {
+    background-image: none !important;
+    width: 24px !important;
+    height: 18px !important;
+    position: relative !important;
+    transform: rotate(0deg) !important;
+    transition: 0.3s ease-in-out !important;
+}
+
+.navbar-toggler-icon::before,
+.navbar-toggler-icon::after,
+.navbar-toggler-icon {
+    display: block !important;
+}
+
+.navbar-toggler-icon::before,
+.navbar-toggler-icon::after {
+    content: '' !important;
+    position: absolute !important;
+    left: 0 !important;
+    width: 100% !important;
+    height: 3px !important;
+    background: #ffffff !important;
+    border-radius: 2px !important;
+    transition: all 0.3s ease-in-out !important;
+}
+
+.navbar-toggler-icon::before {
+    top: 0 !important;
+    box-shadow: 0 8px 0 #ffffff !important;
+}
+
+.navbar-toggler-icon::after {
+    bottom: 0 !important;
+}
+
+/* Hamburger animation when active */
+.navbar-toggler[aria-expanded="true"] .navbar-toggler-icon {
+    background: transparent !important;
+}
+
+.navbar-toggler[aria-expanded="true"] .navbar-toggler-icon::before {
+    top: 8px !important;
+    transform: rotate(45deg) !important;
+    box-shadow: none !important;
+}
+
+.navbar-toggler[aria-expanded="true"] .navbar-toggler-icon::after {
+    bottom: 8px !important;
+    transform: rotate(-45deg) !important;
+}
+
+/* Legacy menu-icon support */
 #menu-icon {
     border: none;
-    /* Remove default border */
     background: transparent;
-    /* Transparent background */
 }
 
 /* Updated hover effect */
@@ -915,25 +989,74 @@ footer .facebook-icon:hover {
 }
 
 
-/* Media Queries for Mobile Screens */
+/* Mobile Hamburger Menu Improvements */
 @media screen and (max-width: 768px) {
+    /* Enhanced hamburger visibility on mobile */
+    .navbar-toggler {
+        border: 3px solid #ffffff !important;
+        background: rgba(0, 0, 0, 0.6) !important;
+        backdrop-filter: blur(15px) !important;
+        padding: 10px 14px !important;
+        margin-right: 10px !important;
+        box-shadow: 
+            0 6px 20px rgba(0, 0, 0, 0.4),
+            0 0 0 1px rgba(255, 255, 255, 0.2) inset !important;
+    }
+    
+    .navbar-toggler:hover {
+        background: rgba(0, 123, 255, 0.4) !important;
+        border-color: #00d4ff !important;
+        box-shadow: 
+            0 8px 30px rgba(0, 123, 255, 0.5),
+            0 0 20px rgba(0, 212, 255, 0.3) !important;
+    }
+    
+    /* Stronger hamburger lines for mobile */
+    .navbar-toggler-icon::before,
+    .navbar-toggler-icon::after {
+        height: 4px !important;
+        background: #ffffff !important;
+        box-shadow: 0 0 5px rgba(255, 255, 255, 0.5) !important;
+    }
+    
+    .navbar-toggler-icon::before {
+        box-shadow: 0 8px 0 #ffffff, 0 0 5px rgba(255, 255, 255, 0.5) !important;
+    }
+
+    /* Legacy menu-icon support */
     .menu-icon {
         display: flex;
+        border: 3px solid #ffffff !important;
+        background: rgba(0, 0, 0, 0.6) !important;
+        padding: 10px !important;
+        border-radius: 8px !important;
+    }
+
+    /* Mobile navigation dropdown */
+    .navbar-collapse {
+        background: rgba(10, 10, 21, 0.95) !important;
+        backdrop-filter: blur(20px) !important;
+        border: 1px solid rgba(255, 255, 255, 0.15) !important;
+        border-radius: 15px !important;
+        margin-top: 15px !important;
+        padding: 20px !important;
+        box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5) !important;
     }
 
     .nav-links {
         display: none;
         flex-direction: column;
         gap: 10px;
-        background-color: #333;
+        background: rgba(10, 10, 21, 0.95);
+        backdrop-filter: blur(20px);
+        border: 1px solid rgba(255, 255, 255, 0.15);
         position: absolute;
-        top: 60px;
+        top: 70px;
         right: 20px;
-        /* Adjust to your liking */
-        padding: 10px;
-        border-radius: 5px;
-        width: 200px;
-        /* Set a width for mobile menu */
+        padding: 20px;
+        border-radius: 15px;
+        width: 250px;
+        box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
     }
 
     .nav-links.active {
@@ -943,7 +1066,14 @@ footer .facebook-icon:hover {
     .nav-links a {
         color: white;
         text-align: center;
-        padding: 10px;
+        padding: 15px;
+        border-radius: 10px;
+        transition: all 0.3s ease;
+    }
+    
+    .nav-links a:hover {
+        background: rgba(0, 123, 255, 0.3);
+        transform: translateX(5px);
     }
 
     .hero {

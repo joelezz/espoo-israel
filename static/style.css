@@ -2022,7 +2022,7 @@ eo Styles */
     width: 100%;
     height: 100%;
     overflow: hidden;
-    z-index: -2;
+    z-index: 1;
 }
 
 .hero-video {
@@ -2037,6 +2037,7 @@ eo Styles */
     object-fit: cover;
     opacity: 0;
     transition: opacity 1s ease;
+    z-index: 2;
 }
 
 .hero-fallback-bg {
@@ -2048,7 +2049,7 @@ eo Styles */
     background: url('/static/images/hero.jpg') center/cover no-repeat;
     opacity: 1;
     transition: opacity 1s ease;
-    z-index: -1;
+    z-index: 1;
 }
 
 .hero-video-overlay {
@@ -2058,12 +2059,12 @@ eo Styles */
     width: 100%;
     height: 100%;
     background: rgba(0, 0, 0, 0.3);
-    z-index: -1;
+    z-index: 3;
 }
 
 .hero-content {
     position: relative;
-    z-index: 1;
+    z-index: 10;
     padding: 100px 20px 50px;
     color: white;
     text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);

@@ -115,8 +115,13 @@
                    muted 
                    loop 
                    playsinline 
-                   preload="auto">
-                <source src="/static/videos/hero-video.mp4" type="video/mp4">
+                   preload="metadata">
+                <!-- Mobile-first: smaller video for mobile devices -->
+                <source src="/static/videos/hero-video-mobile.mp4" type="video/mp4" media="(max-width: 768px)">
+                <!-- Desktop: high-quality video for larger screens -->
+                <source src="/static/videos/hero-video.mp4" type="video/mp4" media="(min-width: 769px)">
+                <!-- Fallback for older browsers -->
+                <source src="/static/videos/hero-video-mobile.mp4" type="video/mp4">
                 Your browser does not support the video tag.
             </video>
             <!-- Fallback background image -->
